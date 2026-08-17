@@ -2,11 +2,13 @@
 #include "font.h"
 #include "logo.h"
 
-#define PWM_PSCR            71
+#define PWM_PSCR            0
 #define PWM_CMP             20000
 #define MOTOR_PWM_MAX       20000
 #define STM32_SPEED_MAX     4800
-#define LEFT_ADJUST_PCT     30
+#define LEFT_ADJUST_PCT     84.5    // 前进左轮系数
+#define REVERSE_ADJUST_PCT  100   // 后退左轮系数
+#define LEFT_PWM_MIN        0     // 0=关闭左轮最小占空比，两轮同PWM
 
 #define PIN_MOTOR_L_DIR1    GPIO_NUM_0
 #define PIN_MOTOR_L_DIR2    GPIO_NUM_1
@@ -23,14 +25,14 @@ static uint32_t fb[FB_N];
 
 int16_t Wheel_Left_Speed = 0;
 int16_t Wheel_Right_Speed = 0;
-    int16_t Std_Speed = 650;
+    int16_t Std_Speed = 4000;
 static uint8_t mode = 0; // 0=debug, 1=slideshow
 static uint8_t slide_idx = 0;
 
-#define turn_rate_num   14
-#define turn_rate_den   10  // 3/5 = 0.6
-#define left_cmps_num   5
-#define left_cmps_den   10  // 6/5 = 1.2
+#define turn_rate_num   1
+#define turn_rate_den   1   // 未使用（保留）
+#define turn_slow_num   5
+#define turn_slow_den   10  // 0.5 = 转弯时内侧轮速度系数
 
 static void fb_clear(uint16_t bg){
     uint32_t v = ((uint32_t)bg << 16) | bg;
@@ -104,7 +106,10 @@ static int hp_uart_data_ready(void) {
 static void motor_apply(void) {
     int16_t l_pwm, r_pwm;
 
-    l_pwm = (int16_t)((int32_t)speed_to_pwm(Wheel_Left_Speed) * LEFT_ADJUST_PCT / 100);
+    int16_t adj = (Wheel_Left_Speed < 0) ? REVERSE_ADJUST_PCT : LEFT_ADJUST_PCT;
+    l_pwm = (int16_t)((int32_t)speed_to_pwm(Wheel_Left_Speed) * adj / 100);
+    if (Wheel_Left_Speed != 0 && l_pwm < LEFT_PWM_MIN)
+        l_pwm = LEFT_PWM_MIN;
     r_pwm = speed_to_pwm(Wheel_Right_Speed);
 
     if (Wheel_Left_Speed > 0) {
@@ -129,8 +134,8 @@ static void motor_apply(void) {
         gpio_hal_set_level(GPIO_ID, PIN_MOTOR_R_DIR2, GPIO_LEVEL_LOW);
     }
 
-    pwm_hal_set_compare(NULL, 0, PWM_CH1, l_pwm);
-    pwm_hal_set_compare(NULL, 0, PWM_CH2, r_pwm);
+    pwm_hal_set_compare(NULL, 0, PWM_CH2, MOTOR_PWM_MAX - l_pwm);
+    pwm_hal_set_compare(NULL, 0, PWM_CH1, MOTOR_PWM_MAX - r_pwm);
 }
 
 void main(void) {
@@ -165,8 +170,8 @@ void main(void) {
 
     pwm_config_t pcfg = { .pscr = PWM_PSCR, .cmp = PWM_CMP };
     pwm_hal_init(NULL, 0, &pcfg);
-    pwm_hal_set_compare(NULL, 0, PWM_CH1, 0);
-    pwm_hal_set_compare(NULL, 0, PWM_CH2, 0);
+    pwm_hal_set_compare(NULL, 0, PWM_CH2, MOTOR_PWM_MAX);
+    pwm_hal_set_compare(NULL, 0, PWM_CH1, MOTOR_PWM_MAX);
     pwm_hal_enable(NULL, 0);
 
     hal_hp_uart_init(38400);
@@ -181,7 +186,7 @@ void main(void) {
 
             switch (cmd) {
             case 'W': case 'w':
-                Wheel_Left_Speed = Std_Speed * left_cmps_num / left_cmps_den;
+                Wheel_Left_Speed = Std_Speed;
                 Wheel_Right_Speed = Std_Speed;
                 break;
             case 'S': case 's':
@@ -189,12 +194,13 @@ void main(void) {
                 Wheel_Right_Speed = 0;
                 break;
             case 'D': case 'd':
-                Wheel_Left_Speed = Std_Speed * turn_rate_num / turn_rate_den;
-                Wheel_Right_Speed = Std_Speed;
+                Wheel_Left_Speed = Std_Speed;
+                Wheel_Right_Speed = Std_Speed * turn_slow_num / turn_slow_den;
                 break;
+            case 'L': case 'l':
             case 'A': case 'a':
-                Wheel_Left_Speed = Std_Speed * left_cmps_num / left_cmps_den;
-                Wheel_Right_Speed = Std_Speed * turn_rate_num / turn_rate_den;
+                Wheel_Left_Speed = Std_Speed * turn_slow_num / turn_slow_den;
+                Wheel_Right_Speed = Std_Speed;
                 break;
             case 'X': case 'x':
                 Wheel_Left_Speed = -Std_Speed;
@@ -241,17 +247,10 @@ void main(void) {
                     memcpy(fb, ysyx_logo, sizeof(fb));
                 slide_idx = !slide_idx;
             } else {
-                fb_clear(0x0000);
-                fb_str(0, 0, "L-SPD:", 0xFFFF);
-                fb_dec(56, 0, Wheel_Left_Speed, 0xFFFF);
-                fb_str(0, 10, "R-SPD:", 0xFFFF);
-                fb_dec(56, 10, Wheel_Right_Speed, 0xFFFF);
-                fb_str(0, 20, "PWM-L:", 0xFFFF);
-                fb_dec(56, 20, speed_to_pwm(Wheel_Left_Speed), 0xFFFF);
-                fb_str(0, 30, "PWM-R:", 0xFFFF);
-                fb_dec(56, 30, speed_to_pwm(Wheel_Right_Speed), 0xFFFF);
-                fb_str(0, 40, "SPD:", 0xFFFF);
-                fb_dec(56, 40, Std_Speed, 0xFFFF);
+                if (Wheel_Left_Speed != 0 || Wheel_Right_Speed != 0)
+                    fb_clear(0x07E0);  // 运动中：纯绿色
+                else
+                    fb_clear(0xF800);  // 停止：纯红色
             }
             st7735_fill_img(&lcd, 0, 0, FB_W, FB_H, fb);
         }
