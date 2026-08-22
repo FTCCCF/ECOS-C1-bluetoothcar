@@ -5,9 +5,9 @@
 #define PWM_PSCR            0
 #define PWM_CMP             20000
 #define MOTOR_PWM_MAX       20000
-#define STM32_SPEED_MAX     4800
-#define LEFT_ADJUST_PCT     84.5    // 前进左轮系数
-#define REVERSE_ADJUST_PCT  100   // 后退左轮系数
+#define STM32_SPEED_MAX     6000
+#define LEFT_ADJUST_PCT     845     // 前进左轮系数（千分率：845=84.5%，步进 0.1%）
+#define REVERSE_ADJUST_PCT  1000    // 后退左轮系数（千分率：1000=100%）
 #define LEFT_PWM_MIN        0     // 0=关闭左轮最小占空比，两轮同PWM
 
 #define PIN_MOTOR_L_DIR1    GPIO_NUM_0
@@ -25,7 +25,7 @@ static uint32_t fb[FB_N];
 
 int16_t Wheel_Left_Speed = 0;
 int16_t Wheel_Right_Speed = 0;
-    int16_t Std_Speed = 4000;
+    int16_t Std_Speed = 4800;
 static uint8_t mode = 0; // 0=debug, 1=slideshow
 static uint8_t slide_idx = 0;
 
@@ -107,7 +107,7 @@ static void motor_apply(void) {
     int16_t l_pwm, r_pwm;
 
     int16_t adj = (Wheel_Left_Speed < 0) ? REVERSE_ADJUST_PCT : LEFT_ADJUST_PCT;
-    l_pwm = (int16_t)((int32_t)speed_to_pwm(Wheel_Left_Speed) * adj / 100);
+    l_pwm = (int16_t)((int32_t)speed_to_pwm(Wheel_Left_Speed) * adj / 1000);
     if (Wheel_Left_Speed != 0 && l_pwm < LEFT_PWM_MIN)
         l_pwm = LEFT_PWM_MIN;
     r_pwm = speed_to_pwm(Wheel_Right_Speed);
@@ -247,10 +247,17 @@ void main(void) {
                     memcpy(fb, ysyx_logo, sizeof(fb));
                 slide_idx = !slide_idx;
             } else {
-                if (Wheel_Left_Speed != 0 || Wheel_Right_Speed != 0)
-                    fb_clear(0x07E0);  // 运动中：纯绿色
-                else
-                    fb_clear(0xF800);  // 停止：纯红色
+                fb_clear(0x0000);
+                fb_str(0, 0, "L-SPD:", 0xFFFF);
+                fb_dec(56, 0, Wheel_Left_Speed, 0xFFFF);
+                fb_str(0, 8, "R-SPD:", 0xFFFF);
+                fb_dec(56, 8, Wheel_Right_Speed, 0xFFFF);
+                fb_str(0, 16, "PWM-L:", 0xFFFF);
+                fb_dec(56, 16, speed_to_pwm(Wheel_Left_Speed), 0xFFFF);
+                fb_str(0, 24, "PWM-R:", 0xFFFF);
+                fb_dec(56, 24, speed_to_pwm(Wheel_Right_Speed), 0xFFFF);
+                fb_str(0, 32, "SPD=", 0xFFFF);
+                fb_dec(40, 32, Std_Speed, 0xFFFF);
             }
             st7735_fill_img(&lcd, 0, 0, FB_W, FB_H, fb);
         }
