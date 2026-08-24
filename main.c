@@ -17,6 +17,9 @@
 
 #define GPIO_ID 0
 
+#define SW_RX_PIN           GPIO_NUM_5  /* 软件串口接收：HC-05 TX 插到 GPIO_5 */
+#define SW_BIT_US           104         /* 实测确认 9600bps（位宽~101us） */
+
 #define FB_W 128
 #define FB_H 128
 #define FB_N (FB_W * FB_H / 2)
@@ -99,8 +102,72 @@ static int16_t speed_to_pwm(int16_t spd) {
     return (int16_t)((int32_t)spd * MOTOR_PWM_MAX / STM32_SPEED_MAX);
 }
 
+static st7735_device_t lcd = {
+    .dc_gpio_port = 0, .dc_gpio_pin = GPIO_NUM_2,
+    .qspi_port = HAL_QSPI_PORT_0, .qspi_cs = HAL_QSPI_CS_0,
+    .screen_width = 128, .screen_height = 128,
+    .rotation = 0, .horizontal_offset = 2, .vertical_offset = 3,
+};
+
+/* 局部刷新：只推 [y0, y0+rows) 行，减少 QSPI 阻塞时间（防吞命令） */
+static void lcd_flush_rows(uint16_t y0, uint16_t rows) {
+    st7735_addr_set(&lcd, 0, y0, FB_W - 1, y0 + rows - 1);
+    uint32_t i = (uint32_t)y0 * (FB_W / 2);
+    uint32_t end = i + (uint32_t)rows * (FB_W / 2);
+    for (; i < end; i++) st7735_wr_data32(&lcd, fb[i]);
+}
+
 static int hp_uart_data_ready(void) {
     return ((REG_UART_1_LSR & 0x080) >> 7) == 0;
+}
+
+static const char hexd[] = "0123456789ABCDEF";
+
+/* ---- 软件串口接收（GPIO 位采样，9600 8N1）---- */
+static uint8_t sw_rx_level(void) {
+    return (uint8_t)((REG_GPIO_0_DR >> SW_RX_PIN) & 1u);
+}
+
+static void tim1_delay_us(uint32_t us) {
+    REG_TIM_1_CONFIG = 0x0100;      /* stop */
+    REG_TIM_1_DATA = us * 72u;      /* 72MHz */
+    REG_TIM_1_CONFIG = 0x0101;      /* start, 倒数到 0 */
+    while (REG_TIM_1_DATA) { }
+}
+
+static void tim1_delay_ticks(uint32_t ticks) {
+    REG_TIM_1_CONFIG = 0x0100;
+    REG_TIM_1_DATA = ticks;
+    REG_TIM_1_CONFIG = 0x0101;
+    while (REG_TIM_1_DATA) { }
+}
+
+static uint32_t sw_bit_ticks = 104u * 72u;   /* 保留：未用 */
+/* 静默解码版：绝对时间轴调度，消除逐位累计漂移 */
+static int sw_uart_try_read(uint8_t *out) {
+    uint32_t guard = 100000;                 /* 全速轮询等待起始位 */
+    while (sw_rx_level()) {
+        if (--guard == 0) return 0;
+    }
+    /* 检测到下降沿。启动自由计数的 TIM_1，按绝对时刻采样：
+     * 位中心 k 的时刻 = 检测点 + (k+1.5)*位宽；读取耗时不再引入累计误差 */
+    REG_TIM_1_CONFIG = 0x0100;
+    REG_TIM_1_DATA = 0xFFFFFF;
+    REG_TIM_1_CONFIG = 0x0101;
+
+    uint32_t step = SW_BIT_US * 72u;         /* 位宽 ticks */
+    uint32_t target = 0xFFFFFF - step * 3u / 2u;   /* b0 中心 */
+
+    *out = 0;
+    for (int b = 0; b < 8; b++) {
+        while (REG_TIM_1_DATA > target) { }  /* 等到该位中心 */
+        uint8_t v = sw_rx_level();
+        *out = (uint8_t)((*out >> 1) | (v << 7));   /* LSB first */
+        target -= step;
+    }
+    target -= step;                          /* 停止位中心 */
+    while (REG_TIM_1_DATA > target) { }
+    return sw_rx_level() ? 1 : 0;
 }
 
 static void motor_apply(void) {
@@ -140,50 +207,48 @@ static void motor_apply(void) {
 
 void main(void) {
     char cmd;
-    uint32_t loop_cnt = 0;
+    uint32_t idle_cnt = 0;
+    uint8_t rb;
 
     hal_sys_uart_init();
-    hal_sys_putstr("C1 Bluetooth Car Boot OK\n");
+    hal_sys_putstr("RC MODE: SW-UART RX @9600 GPIO5\n");
 
     hal_qspi_config_t qc = {.clkdiv = 0};
     hal_qspi_init(HAL_QSPI_PORT_0, &qc);
 
-    st7735_device_t lcd = {
-        .dc_gpio_port = 0, .dc_gpio_pin = GPIO_NUM_2,
-        .qspi_port = HAL_QSPI_PORT_0, .qspi_cs = HAL_QSPI_CS_0,
-        .screen_width = 128, .screen_height = 128,
-        .rotation = 0, .horizontal_offset = 2, .vertical_offset = 3,
-    };
     st7735_init(&lcd);
     fb_clear(0x0000);
-    st7735_fill_img(&lcd, 0, 0, FB_W, FB_H, fb);
 
+    /* 方向脚全 LOW（上电静止） */
     gpio_hal_output_enable(GPIO_ID, PIN_MOTOR_L_DIR1);
     gpio_hal_output_enable(GPIO_ID, PIN_MOTOR_L_DIR2);
     gpio_hal_output_enable(GPIO_ID, PIN_MOTOR_R_DIR1);
     gpio_hal_output_enable(GPIO_ID, PIN_MOTOR_R_DIR2);
-
     gpio_hal_set_level(GPIO_ID, PIN_MOTOR_L_DIR1, GPIO_LEVEL_LOW);
     gpio_hal_set_level(GPIO_ID, PIN_MOTOR_L_DIR2, GPIO_LEVEL_LOW);
     gpio_hal_set_level(GPIO_ID, PIN_MOTOR_R_DIR1, GPIO_LEVEL_LOW);
     gpio_hal_set_level(GPIO_ID, PIN_MOTOR_R_DIR2, GPIO_LEVEL_LOW);
 
+    /* 软件串口接收脚：输入 + 上拉（空闲稳定为高） */
+    gpio_hal_input_enable(GPIO_ID, SW_RX_PIN);
+    REG_GPIO_0_PUB |= (1u << SW_RX_PIN);
+
+    /* PWM：两通道写 MOTOR_PWM_MAX（反相→0% 占空比）后使能 */
     pwm_config_t pcfg = { .pscr = PWM_PSCR, .cmp = PWM_CMP };
     pwm_hal_init(NULL, 0, &pcfg);
     pwm_hal_set_compare(NULL, 0, PWM_CH2, MOTOR_PWM_MAX);
     pwm_hal_set_compare(NULL, 0, PWM_CH1, MOTOR_PWM_MAX);
     pwm_hal_enable(NULL, 0);
 
-    hal_hp_uart_init(38400);
-    hal_sys_putstr("Bluetooth ready at 38400\n");
+    hal_hp_uart_init(9600);
 
-    fb_str(0, 0, "Car Ready", 0xFFFF);
+    /* ---- 遥控主循环：无调试、无刷屏，接收窗口最大化 ---- */
+    fb_str(0, 0, "RC Ready", 0xFFFF);
     st7735_fill_img(&lcd, 0, 0, FB_W, FB_H, fb);
 
-    while (1) {
-        if (hp_uart_data_ready()) {
-            hal_hp_uart_recv(&cmd);
-
+    for (;;) {
+        if (sw_uart_try_read(&rb)) {
+            cmd = (char)rb;
             switch (cmd) {
             case 'W': case 'w':
                 Wheel_Left_Speed = Std_Speed;
@@ -209,59 +274,17 @@ void main(void) {
             case '+':
                 Std_Speed += 200;
                 if (Std_Speed > STM32_SPEED_MAX) Std_Speed = STM32_SPEED_MAX;
-                hal_sys_putstr("SPD+ ");
                 break;
             case '-':
                 Std_Speed -= 200;
                 if (Std_Speed < 200) Std_Speed = 200;
-                hal_sys_putstr("SPD- ");
                 break;
-            case 'P': case 'p':
-                mode = !mode;
-                slide_idx = 0;
-                hal_sys_putstr("MODE ");
-                break;
+            default:
+                continue;               /* 未识别字节：不动作 */
             }
+            motor_apply();              /* 立即执行（微秒级） */
+        } else {
+            motor_apply();              /* 心跳：保持安全态 */
         }
-
-        motor_apply();
-
-        if (++loop_cnt >= 20) {
-            loop_cnt = 0;
-            hal_sys_putstr("[DBG] L=");
-            put_dec(Wheel_Left_Speed);
-            hal_sys_putstr(" R=");
-            put_dec(Wheel_Right_Speed);
-            hal_sys_putstr(" | PWM_L=");
-            put_dec(speed_to_pwm(Wheel_Left_Speed));
-            hal_sys_putstr(" PWM_R=");
-            put_dec(speed_to_pwm(Wheel_Right_Speed));
-            hal_sys_putstr(" | SPD=");
-            put_dec(Std_Speed);
-            hal_sys_putstr("\n");
-
-            if (mode) {
-                if (slide_idx)
-                    memcpy(fb, asc_logo, sizeof(fb));
-                else
-                    memcpy(fb, ysyx_logo, sizeof(fb));
-                slide_idx = !slide_idx;
-            } else {
-                fb_clear(0x0000);
-                fb_str(0, 0, "L-SPD:", 0xFFFF);
-                fb_dec(56, 0, Wheel_Left_Speed, 0xFFFF);
-                fb_str(0, 8, "R-SPD:", 0xFFFF);
-                fb_dec(56, 8, Wheel_Right_Speed, 0xFFFF);
-                fb_str(0, 16, "PWM-L:", 0xFFFF);
-                fb_dec(56, 16, speed_to_pwm(Wheel_Left_Speed), 0xFFFF);
-                fb_str(0, 24, "PWM-R:", 0xFFFF);
-                fb_dec(56, 24, speed_to_pwm(Wheel_Right_Speed), 0xFFFF);
-                fb_str(0, 32, "SPD=", 0xFFFF);
-                fb_dec(40, 32, Std_Speed, 0xFFFF);
-            }
-            st7735_fill_img(&lcd, 0, 0, FB_W, FB_H, fb);
-        }
-
-        hal_delay_ms(0, 100);
     }
 }
