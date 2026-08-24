@@ -1,224 +1,224 @@
 
 Discarded input sections
 
- .debug_line    0x00000000      0x258 /tmp/ccps5S4U.o
+ .debug_line    0x00000000      0x258 /tmp/ccL2uBW6.o
  .debug_line_str
-                0x00000000       0x1a /tmp/ccps5S4U.o
- .debug_info    0x00000000       0x25 /tmp/ccps5S4U.o
- .debug_abbrev  0x00000000       0x14 /tmp/ccps5S4U.o
+                0x00000000       0x1a /tmp/ccL2uBW6.o
+ .debug_info    0x00000000       0x25 /tmp/ccL2uBW6.o
+ .debug_abbrev  0x00000000       0x14 /tmp/ccL2uBW6.o
  .debug_aranges
-                0x00000000       0x20 /tmp/ccps5S4U.o
- .debug_str     0x00000000       0x26 /tmp/ccps5S4U.o
- .debug_info    0x00000000     0x10f4 /tmp/cccmProK.o
- .debug_abbrev  0x00000000      0x3c5 /tmp/cccmProK.o
+                0x00000000       0x20 /tmp/ccL2uBW6.o
+ .debug_str     0x00000000       0x26 /tmp/ccL2uBW6.o
+ .debug_info    0x00000000    0x10da4 /tmp/ccaFlclq.o
+ .debug_abbrev  0x00000000      0x315 /tmp/ccaFlclq.o
  .debug_loclists
-                0x00000000      0x401 /tmp/cccmProK.o
+                0x00000000      0x301 /tmp/ccaFlclq.o
  .debug_aranges
-                0x00000000       0x28 /tmp/cccmProK.o
+                0x00000000       0x20 /tmp/ccaFlclq.o
  .debug_rnglists
-                0x00000000       0xa2 /tmp/cccmProK.o
- .debug_line    0x00000000      0xe93 /tmp/cccmProK.o
- .debug_str     0x00000000      0x7bb /tmp/cccmProK.o
+                0x00000000       0xeb /tmp/ccaFlclq.o
+ .debug_line    0x00000000      0xaec /tmp/ccaFlclq.o
+ .debug_str     0x00000000      0x798 /tmp/ccaFlclq.o
  .debug_line_str
-                0x00000000      0x2bc /tmp/cccmProK.o
- .debug_frame   0x00000000      0x10c /tmp/cccmProK.o
- .debug_info    0x00000000      0x22d /tmp/ccjjhmWS.o
- .debug_abbrev  0x00000000      0x142 /tmp/ccjjhmWS.o
+                0x00000000      0x241 /tmp/ccaFlclq.o
+ .debug_frame   0x00000000       0x38 /tmp/ccaFlclq.o
+ .debug_info    0x00000000      0x22d /tmp/ccoJZt21.o
+ .debug_abbrev  0x00000000      0x142 /tmp/ccoJZt21.o
  .debug_loclists
-                0x00000000       0x35 /tmp/ccjjhmWS.o
+                0x00000000       0x35 /tmp/ccoJZt21.o
  .debug_aranges
-                0x00000000       0x20 /tmp/ccjjhmWS.o
- .debug_line    0x00000000      0x16f /tmp/ccjjhmWS.o
- .debug_str     0x00000000      0x1d4 /tmp/ccjjhmWS.o
+                0x00000000       0x20 /tmp/ccoJZt21.o
+ .debug_line    0x00000000      0x16f /tmp/ccoJZt21.o
+ .debug_str     0x00000000      0x1d4 /tmp/ccoJZt21.o
  .debug_line_str
-                0x00000000      0x102 /tmp/ccjjhmWS.o
- .debug_frame   0x00000000       0x90 /tmp/ccjjhmWS.o
- .debug_info    0x00000000      0xbee /tmp/cc1RIcyo.o
- .debug_abbrev  0x00000000      0x106 /tmp/cc1RIcyo.o
+                0x00000000      0x102 /tmp/ccoJZt21.o
+ .debug_frame   0x00000000       0x90 /tmp/ccoJZt21.o
+ .debug_info    0x00000000      0xbee /tmp/ccAQ5Xen.o
+ .debug_abbrev  0x00000000      0x106 /tmp/ccAQ5Xen.o
  .debug_loclists
-                0x00000000      0x97d /tmp/cc1RIcyo.o
+                0x00000000      0x97d /tmp/ccAQ5Xen.o
  .debug_aranges
-                0x00000000       0x20 /tmp/cc1RIcyo.o
- .debug_line    0x00000000      0xed0 /tmp/cc1RIcyo.o
- .debug_str     0x00000000      0x3e1 /tmp/cc1RIcyo.o
+                0x00000000       0x20 /tmp/ccAQ5Xen.o
+ .debug_line    0x00000000      0xed0 /tmp/ccAQ5Xen.o
+ .debug_str     0x00000000      0x3e1 /tmp/ccAQ5Xen.o
  .debug_line_str
-                0x00000000       0xfd /tmp/cc1RIcyo.o
- .debug_frame   0x00000000      0x1d0 /tmp/cc1RIcyo.o
- .debug_info    0x00000000      0x3bd /tmp/ccJTh6yX.o
- .debug_abbrev  0x00000000      0x10d /tmp/ccJTh6yX.o
+                0x00000000       0xfd /tmp/ccAQ5Xen.o
+ .debug_frame   0x00000000      0x1d0 /tmp/ccAQ5Xen.o
+ .debug_info    0x00000000      0x3bd /tmp/cctrKrnq.o
+ .debug_abbrev  0x00000000      0x10d /tmp/cctrKrnq.o
  .debug_loclists
-                0x00000000      0x4d7 /tmp/ccJTh6yX.o
+                0x00000000      0x4d7 /tmp/cctrKrnq.o
  .debug_aranges
-                0x00000000       0x20 /tmp/ccJTh6yX.o
- .debug_line    0x00000000      0x564 /tmp/ccJTh6yX.o
- .debug_str     0x00000000      0x15c /tmp/ccJTh6yX.o
+                0x00000000       0x20 /tmp/cctrKrnq.o
+ .debug_line    0x00000000      0x564 /tmp/cctrKrnq.o
+ .debug_str     0x00000000      0x15c /tmp/cctrKrnq.o
  .debug_line_str
-                0x00000000       0xda /tmp/ccJTh6yX.o
- .debug_frame   0x00000000       0xb0 /tmp/ccJTh6yX.o
- .debug_info    0x00000000      0x93b /tmp/ccmqXef9.o
- .debug_abbrev  0x00000000      0x25b /tmp/ccmqXef9.o
+                0x00000000       0xda /tmp/cctrKrnq.o
+ .debug_frame   0x00000000       0xb0 /tmp/cctrKrnq.o
+ .debug_info    0x00000000      0x93b /tmp/ccsskM6o.o
+ .debug_abbrev  0x00000000      0x25b /tmp/ccsskM6o.o
  .debug_loclists
-                0x00000000      0xb03 /tmp/ccmqXef9.o
+                0x00000000      0xb03 /tmp/ccsskM6o.o
  .debug_aranges
-                0x00000000       0x20 /tmp/ccmqXef9.o
+                0x00000000       0x20 /tmp/ccsskM6o.o
  .debug_rnglists
-                0x00000000       0x7e /tmp/ccmqXef9.o
- .debug_line    0x00000000     0x11e9 /tmp/ccmqXef9.o
- .debug_str     0x00000000      0x1db /tmp/ccmqXef9.o
+                0x00000000       0x7e /tmp/ccsskM6o.o
+ .debug_line    0x00000000     0x11e9 /tmp/ccsskM6o.o
+ .debug_str     0x00000000      0x1db /tmp/ccsskM6o.o
  .debug_line_str
-                0x00000000       0xe0 /tmp/ccmqXef9.o
- .debug_frame   0x00000000      0x12c /tmp/ccmqXef9.o
- .debug_info    0x00000000      0x4b2 /tmp/ccbqtiPn.o
- .debug_abbrev  0x00000000      0x243 /tmp/ccbqtiPn.o
+                0x00000000       0xe0 /tmp/ccsskM6o.o
+ .debug_frame   0x00000000      0x12c /tmp/ccsskM6o.o
+ .debug_info    0x00000000      0x4b2 /tmp/cc9sMGCK.o
+ .debug_abbrev  0x00000000      0x243 /tmp/cc9sMGCK.o
  .debug_loclists
-                0x00000000      0x25b /tmp/ccbqtiPn.o
+                0x00000000      0x25b /tmp/cc9sMGCK.o
  .debug_aranges
-                0x00000000       0x20 /tmp/ccbqtiPn.o
+                0x00000000       0x20 /tmp/cc9sMGCK.o
  .debug_rnglists
-                0x00000000       0x64 /tmp/ccbqtiPn.o
- .debug_line    0x00000000      0x5a8 /tmp/ccbqtiPn.o
- .debug_str     0x00000000      0x283 /tmp/ccbqtiPn.o
+                0x00000000       0x64 /tmp/cc9sMGCK.o
+ .debug_line    0x00000000      0x5a8 /tmp/cc9sMGCK.o
+ .debug_str     0x00000000      0x283 /tmp/cc9sMGCK.o
  .debug_line_str
-                0x00000000      0x190 /tmp/ccbqtiPn.o
- .debug_frame   0x00000000       0xe4 /tmp/ccbqtiPn.o
- .debug_info    0x00000000      0xa1e /tmp/ccgIXkqZ.o
- .debug_abbrev  0x00000000      0x141 /tmp/ccgIXkqZ.o
+                0x00000000      0x190 /tmp/cc9sMGCK.o
+ .debug_frame   0x00000000       0xe4 /tmp/cc9sMGCK.o
+ .debug_info    0x00000000      0xa1e /tmp/cceQBVig.o
+ .debug_abbrev  0x00000000      0x141 /tmp/cceQBVig.o
  .debug_loclists
-                0x00000000      0x4d1 /tmp/ccgIXkqZ.o
+                0x00000000      0x4d1 /tmp/cceQBVig.o
  .debug_aranges
-                0x00000000       0x20 /tmp/ccgIXkqZ.o
- .debug_line    0x00000000     0x10c5 /tmp/ccgIXkqZ.o
- .debug_str     0x00000000      0x33a /tmp/ccgIXkqZ.o
+                0x00000000       0x20 /tmp/cceQBVig.o
+ .debug_line    0x00000000     0x10c5 /tmp/cceQBVig.o
+ .debug_str     0x00000000      0x33a /tmp/cceQBVig.o
  .debug_line_str
-                0x00000000      0x197 /tmp/ccgIXkqZ.o
- .debug_frame   0x00000000      0x108 /tmp/ccgIXkqZ.o
- .debug_info    0x00000000      0x15b /tmp/ccjccbDF.o
- .debug_abbrev  0x00000000       0xca /tmp/ccjccbDF.o
+                0x00000000      0x197 /tmp/cceQBVig.o
+ .debug_frame   0x00000000      0x108 /tmp/cceQBVig.o
+ .debug_info    0x00000000      0x15b /tmp/cclr63dM.o
+ .debug_abbrev  0x00000000       0xca /tmp/cclr63dM.o
  .debug_loclists
-                0x00000000       0x48 /tmp/ccjccbDF.o
+                0x00000000       0x48 /tmp/cclr63dM.o
  .debug_aranges
-                0x00000000       0x20 /tmp/ccjccbDF.o
- .debug_line    0x00000000      0x16d /tmp/ccjccbDF.o
- .debug_str     0x00000000      0x131 /tmp/ccjccbDF.o
+                0x00000000       0x20 /tmp/cclr63dM.o
+ .debug_line    0x00000000      0x16d /tmp/cclr63dM.o
+ .debug_str     0x00000000      0x131 /tmp/cclr63dM.o
  .debug_line_str
-                0x00000000      0x123 /tmp/ccjccbDF.o
- .debug_frame   0x00000000       0x60 /tmp/ccjccbDF.o
- .debug_info    0x00000000      0x526 /tmp/cccsVaBT.o
- .debug_abbrev  0x00000000      0x17f /tmp/cccsVaBT.o
+                0x00000000      0x123 /tmp/cclr63dM.o
+ .debug_frame   0x00000000       0x60 /tmp/cclr63dM.o
+ .debug_info    0x00000000      0x526 /tmp/ccwQzuzI.o
+ .debug_abbrev  0x00000000      0x17f /tmp/ccwQzuzI.o
  .debug_loclists
-                0x00000000      0x141 /tmp/cccsVaBT.o
+                0x00000000      0x141 /tmp/ccwQzuzI.o
  .debug_aranges
-                0x00000000       0x20 /tmp/cccsVaBT.o
+                0x00000000       0x20 /tmp/ccwQzuzI.o
  .debug_rnglists
-                0x00000000       0x35 /tmp/cccsVaBT.o
- .debug_line    0x00000000      0x29f /tmp/cccsVaBT.o
- .debug_str     0x00000000      0x5aa /tmp/cccsVaBT.o
+                0x00000000       0x35 /tmp/ccwQzuzI.o
+ .debug_line    0x00000000      0x29f /tmp/ccwQzuzI.o
+ .debug_str     0x00000000      0x5aa /tmp/ccwQzuzI.o
  .debug_line_str
-                0x00000000      0x161 /tmp/cccsVaBT.o
- .debug_frame   0x00000000       0x98 /tmp/cccsVaBT.o
- .debug_info    0x00000000      0x13d /tmp/ccB1TLzb.o
- .debug_abbrev  0x00000000       0xd0 /tmp/ccB1TLzb.o
+                0x00000000      0x161 /tmp/ccwQzuzI.o
+ .debug_frame   0x00000000       0x98 /tmp/ccwQzuzI.o
+ .debug_info    0x00000000      0x13d /tmp/cchklUsO.o
+ .debug_abbrev  0x00000000       0xd0 /tmp/cchklUsO.o
  .debug_aranges
-                0x00000000       0x20 /tmp/ccB1TLzb.o
- .debug_line    0x00000000      0x13a /tmp/ccB1TLzb.o
- .debug_str     0x00000000      0x14b /tmp/ccB1TLzb.o
+                0x00000000       0x20 /tmp/cchklUsO.o
+ .debug_line    0x00000000      0x13a /tmp/cchklUsO.o
+ .debug_str     0x00000000      0x14b /tmp/cchklUsO.o
  .debug_line_str
-                0x00000000      0x15a /tmp/ccB1TLzb.o
- .debug_frame   0x00000000       0x30 /tmp/ccB1TLzb.o
- .debug_info    0x00000000      0x5c6 /tmp/cceAPU1s.o
- .debug_abbrev  0x00000000      0x1c5 /tmp/cceAPU1s.o
+                0x00000000      0x15a /tmp/cchklUsO.o
+ .debug_frame   0x00000000       0x30 /tmp/cchklUsO.o
+ .debug_info    0x00000000      0x5c6 /tmp/ccKD2mZF.o
+ .debug_abbrev  0x00000000      0x1c5 /tmp/ccKD2mZF.o
  .debug_loclists
-                0x00000000       0xc0 /tmp/cceAPU1s.o
+                0x00000000       0xc0 /tmp/ccKD2mZF.o
  .debug_aranges
-                0x00000000       0x20 /tmp/cceAPU1s.o
+                0x00000000       0x20 /tmp/ccKD2mZF.o
  .debug_rnglists
-                0x00000000       0x5a /tmp/cceAPU1s.o
- .debug_line    0x00000000      0x2db /tmp/cceAPU1s.o
- .debug_str     0x00000000      0x4e5 /tmp/cceAPU1s.o
+                0x00000000       0x5a /tmp/ccKD2mZF.o
+ .debug_line    0x00000000      0x2db /tmp/ccKD2mZF.o
+ .debug_str     0x00000000      0x4e5 /tmp/ccKD2mZF.o
  .debug_line_str
-                0x00000000      0x189 /tmp/cceAPU1s.o
- .debug_frame   0x00000000       0x98 /tmp/cceAPU1s.o
- .debug_info    0x00000000      0x124 /tmp/ccWxXs9e.o
- .debug_abbrev  0x00000000       0xc8 /tmp/ccWxXs9e.o
+                0x00000000      0x189 /tmp/ccKD2mZF.o
+ .debug_frame   0x00000000       0x98 /tmp/ccKD2mZF.o
+ .debug_info    0x00000000      0x124 /tmp/ccavKJYd.o
+ .debug_abbrev  0x00000000       0xc8 /tmp/ccavKJYd.o
  .debug_loclists
-                0x00000000       0x69 /tmp/ccWxXs9e.o
+                0x00000000       0x69 /tmp/ccavKJYd.o
  .debug_aranges
-                0x00000000       0x20 /tmp/ccWxXs9e.o
- .debug_line    0x00000000      0x11d /tmp/ccWxXs9e.o
- .debug_str     0x00000000      0x11b /tmp/ccWxXs9e.o
+                0x00000000       0x20 /tmp/ccavKJYd.o
+ .debug_line    0x00000000      0x11d /tmp/ccavKJYd.o
+ .debug_str     0x00000000      0x11b /tmp/ccavKJYd.o
  .debug_line_str
-                0x00000000      0x12b /tmp/ccWxXs9e.o
- .debug_frame   0x00000000       0x20 /tmp/ccWxXs9e.o
- .debug_info    0x00000000       0x6f /tmp/cc0lGMFr.o
- .debug_abbrev  0x00000000       0x60 /tmp/cc0lGMFr.o
+                0x00000000      0x12b /tmp/ccavKJYd.o
+ .debug_frame   0x00000000       0x20 /tmp/ccavKJYd.o
+ .debug_info    0x00000000       0x6f /tmp/ccX8y7OI.o
+ .debug_abbrev  0x00000000       0x60 /tmp/ccX8y7OI.o
  .debug_loclists
-                0x00000000       0x2e /tmp/cc0lGMFr.o
+                0x00000000       0x2e /tmp/ccX8y7OI.o
  .debug_aranges
-                0x00000000       0x20 /tmp/cc0lGMFr.o
- .debug_line    0x00000000       0xd3 /tmp/cc0lGMFr.o
- .debug_str     0x00000000       0x69 /tmp/cc0lGMFr.o
+                0x00000000       0x20 /tmp/ccX8y7OI.o
+ .debug_line    0x00000000       0xd3 /tmp/ccX8y7OI.o
+ .debug_str     0x00000000       0x69 /tmp/ccX8y7OI.o
  .debug_line_str
-                0x00000000       0xa5 /tmp/cc0lGMFr.o
- .debug_frame   0x00000000       0x20 /tmp/cc0lGMFr.o
- .debug_info    0x00000000     0x184c /tmp/ccc2YFET.o
- .debug_abbrev  0x00000000      0x187 /tmp/ccc2YFET.o
+                0x00000000       0xa5 /tmp/ccX8y7OI.o
+ .debug_frame   0x00000000       0x20 /tmp/ccX8y7OI.o
+ .debug_info    0x00000000     0x184c /tmp/ccyuncfs.o
+ .debug_abbrev  0x00000000      0x187 /tmp/ccyuncfs.o
  .debug_loclists
-                0x00000000      0x8e9 /tmp/ccc2YFET.o
+                0x00000000      0x8e9 /tmp/ccyuncfs.o
  .debug_aranges
-                0x00000000       0x20 /tmp/ccc2YFET.o
+                0x00000000       0x20 /tmp/ccyuncfs.o
  .debug_rnglists
-                0x00000000       0x22 /tmp/ccc2YFET.o
- .debug_line    0x00000000      0x871 /tmp/ccc2YFET.o
- .debug_str     0x00000000      0x4d9 /tmp/ccc2YFET.o
+                0x00000000       0x22 /tmp/ccyuncfs.o
+ .debug_line    0x00000000      0x871 /tmp/ccyuncfs.o
+ .debug_str     0x00000000      0x4d9 /tmp/ccyuncfs.o
  .debug_line_str
-                0x00000000      0x247 /tmp/ccc2YFET.o
- .debug_frame   0x00000000      0x210 /tmp/ccc2YFET.o
- .debug_info    0x00000000      0x174 /tmp/cc9iquiC.o
- .debug_abbrev  0x00000000      0x10b /tmp/cc9iquiC.o
+                0x00000000      0x247 /tmp/ccyuncfs.o
+ .debug_frame   0x00000000      0x210 /tmp/ccyuncfs.o
+ .debug_info    0x00000000      0x174 /tmp/ccLF1Kh5.o
+ .debug_abbrev  0x00000000      0x10b /tmp/ccLF1Kh5.o
  .debug_loclists
-                0x00000000       0x2a /tmp/cc9iquiC.o
+                0x00000000       0x2a /tmp/ccLF1Kh5.o
  .debug_aranges
-                0x00000000       0x20 /tmp/cc9iquiC.o
+                0x00000000       0x20 /tmp/ccLF1Kh5.o
  .debug_rnglists
-                0x00000000       0x13 /tmp/cc9iquiC.o
- .debug_line    0x00000000      0x15b /tmp/cc9iquiC.o
- .debug_str     0x00000000      0x161 /tmp/cc9iquiC.o
+                0x00000000       0x13 /tmp/ccLF1Kh5.o
+ .debug_line    0x00000000      0x15b /tmp/ccLF1Kh5.o
+ .debug_str     0x00000000      0x161 /tmp/ccLF1Kh5.o
  .debug_line_str
-                0x00000000      0x146 /tmp/cc9iquiC.o
- .debug_frame   0x00000000       0x50 /tmp/cc9iquiC.o
- .debug_info    0x00000000      0x225 /tmp/ccOe2Dgv.o
- .debug_abbrev  0x00000000       0xa9 /tmp/ccOe2Dgv.o
+                0x00000000      0x146 /tmp/ccLF1Kh5.o
+ .debug_frame   0x00000000       0x50 /tmp/ccLF1Kh5.o
+ .debug_info    0x00000000      0x225 /tmp/ccfuMFhb.o
+ .debug_abbrev  0x00000000       0xa9 /tmp/ccfuMFhb.o
  .debug_loclists
-                0x00000000      0x14c /tmp/ccOe2Dgv.o
+                0x00000000      0x14c /tmp/ccfuMFhb.o
  .debug_aranges
-                0x00000000       0x20 /tmp/ccOe2Dgv.o
- .debug_line    0x00000000      0x355 /tmp/ccOe2Dgv.o
- .debug_str     0x00000000      0x158 /tmp/ccOe2Dgv.o
+                0x00000000       0x20 /tmp/ccfuMFhb.o
+ .debug_line    0x00000000      0x355 /tmp/ccfuMFhb.o
+ .debug_str     0x00000000      0x158 /tmp/ccfuMFhb.o
  .debug_line_str
-                0x00000000      0x137 /tmp/ccOe2Dgv.o
- .debug_frame   0x00000000       0x70 /tmp/ccOe2Dgv.o
- .debug_info    0x00000000      0x205 /tmp/ccZKsVGk.o
- .debug_abbrev  0x00000000      0x111 /tmp/ccZKsVGk.o
+                0x00000000      0x137 /tmp/ccfuMFhb.o
+ .debug_frame   0x00000000       0x70 /tmp/ccfuMFhb.o
+ .debug_info    0x00000000      0x205 /tmp/ccuAIKcP.o
+ .debug_abbrev  0x00000000      0x111 /tmp/ccuAIKcP.o
  .debug_loclists
-                0x00000000       0x31 /tmp/ccZKsVGk.o
+                0x00000000       0x31 /tmp/ccuAIKcP.o
  .debug_aranges
-                0x00000000       0x20 /tmp/ccZKsVGk.o
- .debug_line    0x00000000      0x30c /tmp/ccZKsVGk.o
- .debug_str     0x00000000      0x1f9 /tmp/ccZKsVGk.o
+                0x00000000       0x20 /tmp/ccuAIKcP.o
+ .debug_line    0x00000000      0x30c /tmp/ccuAIKcP.o
+ .debug_str     0x00000000      0x1f9 /tmp/ccuAIKcP.o
  .debug_line_str
-                0x00000000      0x17f /tmp/ccZKsVGk.o
- .debug_frame   0x00000000       0x98 /tmp/ccZKsVGk.o
- .debug_info    0x00000000      0x206 /tmp/cciMg3T1.o
- .debug_abbrev  0x00000000       0xec /tmp/cciMg3T1.o
+                0x00000000      0x17f /tmp/ccuAIKcP.o
+ .debug_frame   0x00000000       0x98 /tmp/ccuAIKcP.o
+ .debug_info    0x00000000      0x206 /tmp/ccuggNnJ.o
+ .debug_abbrev  0x00000000       0xec /tmp/ccuggNnJ.o
  .debug_loclists
-                0x00000000       0x68 /tmp/cciMg3T1.o
+                0x00000000       0x68 /tmp/ccuggNnJ.o
  .debug_aranges
-                0x00000000       0x20 /tmp/cciMg3T1.o
- .debug_line    0x00000000      0x1de /tmp/cciMg3T1.o
- .debug_str     0x00000000      0x198 /tmp/cciMg3T1.o
+                0x00000000       0x20 /tmp/ccuggNnJ.o
+ .debug_line    0x00000000      0x1de /tmp/ccuggNnJ.o
+ .debug_str     0x00000000      0x198 /tmp/ccuggNnJ.o
  .debug_line_str
-                0x00000000      0x163 /tmp/cciMg3T1.o
- .debug_frame   0x00000000       0x50 /tmp/cciMg3T1.o
+                0x00000000      0x163 /tmp/ccuggNnJ.o
+ .debug_frame   0x00000000       0x50 /tmp/ccuggNnJ.o
 
 Memory Configuration
 
@@ -230,466 +230,467 @@ RAM              0x04000000         0x00800000         xrw
 Linker script and memory map
 
 
-.text           0x30000000    0x13e2c
+.text           0x30000000     0x3b68
                 0x30000000                        . = ALIGN (0x4)
  *(.text)
- .text          0x30000000      0x178 /tmp/ccps5S4U.o
+ .text          0x30000000      0x178 /tmp/ccL2uBW6.o
                 0x300000e0                flashio_worker_begin
                 0x30000178                flashio_worker_end
- .text          0x30000178      0x3b0 /tmp/cccmProK.o
- .text          0x30000528       0x94 /tmp/ccjjhmWS.o
-                0x30000528                gpio_hal_input_enable
-                0x30000544                gpio_hal_output_enable
-                0x30000564                gpio_hal_set_level
-                0x30000598                gpio_hal_get_level
-                0x300005ac                gpio_hal_read_update
-                0x300005b0                gpio_hal_write_update
-                0x300005b4                gpio_hal_set_fcfg
-                0x300005b8                gpio_hal_set_mux
- .text          0x300005bc      0x688 /tmp/cc1RIcyo.o
-                0x300005dc                hal_qspi_init
-                0x30000614                hal_qspi_deinit
-                0x3000061c                hal_qspi_write_8
-                0x3000065c                hal_qspi_write_8_cs
-                0x3000069c                hal_qspi_write_16
-                0x300006dc                hal_qspi_write_16_cs
-                0x3000071c                hal_qspi_write_32
-                0x30000758                hal_qspi_write_32_cs
-                0x30000794                hal_qspi_write_32x2
-                0x300007d4                hal_qspi_write_32x2_cs
-                0x30000814                hal_qspi_write_32x8
-                0x30000870                hal_qspi_write_32x8_cs
-                0x300008cc                hal_qspi_write_32x16
-                0x30000968                hal_qspi_write_32x16_cs
-                0x30000a04                hal_qspi_write_32x32
-                0x30000b24                hal_qspi_write_32x32_cs
- .text          0x30000c44      0x1e4 /tmp/ccJTh6yX.o
-                0x30000c44                memcpy
-                0x30000c68                memset
-                0x30000c84                strlen
-                0x30000ca4                memcmp
-                0x30000cd4                strchr
-                0x30000cf0                strcmp
-                0x30000d18                strncpy
-                0x30000d78                strcpy
-                0x30000d94                strncmp
-                0x30000dcc                memmove
- .text          0x30000e28      0x914 /tmp/ccmqXef9.o
-                0x30001018                vprintf
-                0x3000127c                vsnprintf
-                0x300016cc                snprintf
-                0x30001700                printf
- .text          0x3000173c      0x2b8 /tmp/ccbqtiPn.o
-                0x300017e0                i2c_init
-                0x30001800                i2c_write_nbyte
-                0x300018c4                i2c_read_nbyte
- .text          0x300019f4      0x614 /tmp/ccgIXkqZ.o
-                0x300019f4                qspi_init
-                0x30001a88                qspi_write_8
-                0x30001acc                qspi_write_8_cs
-                0x30001b04                qspi_write_16
-                0x30001b3c                qspi_write_16_cs
-                0x30001b74                qspi_write_32
-                0x30001ba8                qspi_write_32_cs
-                0x30001bdc                qspi_write_32x2
-                0x30001c14                qspi_write_32x8
-                0x30001c64                qspi_write_32x8_cs
-                0x30001cb8                qspi_write_32x16
-                0x30001d48                qspi_write_32x16_cs
-                0x30001ddc                qspi_write_32x32
-                0x30001ef0                qspi_write_32x32_cs
- .text          0x30002008       0x84 /tmp/ccjccbDF.o
-                0x30002008                delay_us
-                0x30002040                delay_ms
-                0x3000204c                delay_s
-                0x30002058                sys_tick_init
-                0x3000207c                get_sys_tick
- .text          0x3000208c      0x13c /tmp/cccsVaBT.o
-                0x3000208c                gpio_config
-                0x30002148                gpio_set_direction
-                0x30002178                gpio_set_level
-                0x300021b0                gpio_get_level
-                0x300021c4                gpio_set_function
- .text          0x300021c8       0x74 /tmp/ccB1TLzb.o
-                0x300021c8                pwm_init
-                0x300021f0                pwm_set_compare
- .text          0x3000223c      0x17c /tmp/cceAPU1s.o
-                0x3000223c                MYSPI_Init
-                0x300022a0                MYSPI_Start
-                0x300022c4                MYSPI_Stop
-                0x300022e8                MYSPI_SwapByte
- .text          0x300023b8       0x48 /tmp/ccWxXs9e.o
-                0x300023b8                __lshrdi3
- .text          0x30002400       0x28 /tmp/cc0lGMFr.o
-                0x30002400                __mulsi3
- .text          0x30002428      0xbe4 /tmp/ccc2YFET.o
-                0x30002428                st7735_wr_data8
-                0x30002470                st7735_wr_data16
-                0x300024b8                st7735_wr_data32
-                0x30002500                st7735_wr_data32x2
-                0x30002558                st7735_wr_data32x8
-                0x300025e8                st7735_wr_data32x16
-                0x300026b8                st7735_wr_data32x32
-                0x30002808                st7735_wr_cmd
-                0x30002850                st7735_addr_set
-                0x3000291c                st7735_fill
-                0x30002a50                st7735_init
-                0x30002eb8                st7735_fill_img
- .text          0x3000300c       0x58 /tmp/cc9iquiC.o
-                0x3000300c                hal_sys_uart_init
-                0x3000301c                hal_sys_putchar
-                0x30003028                hal_sys_putstr
-                0x30003048                hal_sys_getchar
- .text          0x30003064      0x13c /tmp/ccOe2Dgv.o
-                0x30003064                hal_delay_us
-                0x300030ec                hal_delay_ms
-                0x30003104                hal_delay_s
-                0x30003110                hal_sys_tick_init
-                0x30003170                hal_get_sys_tick
- .text          0x300031a0      0x160 /tmp/ccZKsVGk.o
-                0x300031a0                hal_hp_uart_init
-                0x300031e0                hal_hp_uart_config
-                0x30003240                hal_hp_uart_send
-                0x30003260                hal_hp_uart_putstr
-                0x30003294                hal_hp_uart_recv
-                0x300032bc                hal_hp_uart_recv_str
- .text          0x30003300       0xa4 /tmp/cciMg3T1.o
-                0x30003300                pwm_hal_init
-                0x30003324                pwm_hal_set_compare
-                0x30003378                pwm_hal_enable
-                0x30003390                pwm_hal_disable
+ .text          0x30000178        0x0 /tmp/ccaFlclq.o
+ .text          0x30000178       0x94 /tmp/ccoJZt21.o
+                0x30000178                gpio_hal_input_enable
+                0x30000194                gpio_hal_output_enable
+                0x300001b4                gpio_hal_set_level
+                0x300001e8                gpio_hal_get_level
+                0x300001fc                gpio_hal_read_update
+                0x30000200                gpio_hal_write_update
+                0x30000204                gpio_hal_set_fcfg
+                0x30000208                gpio_hal_set_mux
+ .text          0x3000020c      0x688 /tmp/ccAQ5Xen.o
+                0x3000022c                hal_qspi_init
+                0x30000264                hal_qspi_deinit
+                0x3000026c                hal_qspi_write_8
+                0x300002ac                hal_qspi_write_8_cs
+                0x300002ec                hal_qspi_write_16
+                0x3000032c                hal_qspi_write_16_cs
+                0x3000036c                hal_qspi_write_32
+                0x300003a8                hal_qspi_write_32_cs
+                0x300003e4                hal_qspi_write_32x2
+                0x30000424                hal_qspi_write_32x2_cs
+                0x30000464                hal_qspi_write_32x8
+                0x300004c0                hal_qspi_write_32x8_cs
+                0x3000051c                hal_qspi_write_32x16
+                0x300005b8                hal_qspi_write_32x16_cs
+                0x30000654                hal_qspi_write_32x32
+                0x30000774                hal_qspi_write_32x32_cs
+ .text          0x30000894      0x1e4 /tmp/cctrKrnq.o
+                0x30000894                memcpy
+                0x300008b8                memset
+                0x300008d4                strlen
+                0x300008f4                memcmp
+                0x30000924                strchr
+                0x30000940                strcmp
+                0x30000968                strncpy
+                0x300009c8                strcpy
+                0x300009e4                strncmp
+                0x30000a1c                memmove
+ .text          0x30000a78      0x914 /tmp/ccsskM6o.o
+                0x30000c68                vprintf
+                0x30000ecc                vsnprintf
+                0x3000131c                snprintf
+                0x30001350                printf
+ .text          0x3000138c      0x2b8 /tmp/cc9sMGCK.o
+                0x30001430                i2c_init
+                0x30001450                i2c_write_nbyte
+                0x30001514                i2c_read_nbyte
+ .text          0x30001644      0x614 /tmp/cceQBVig.o
+                0x30001644                qspi_init
+                0x300016d8                qspi_write_8
+                0x3000171c                qspi_write_8_cs
+                0x30001754                qspi_write_16
+                0x3000178c                qspi_write_16_cs
+                0x300017c4                qspi_write_32
+                0x300017f8                qspi_write_32_cs
+                0x3000182c                qspi_write_32x2
+                0x30001864                qspi_write_32x8
+                0x300018b4                qspi_write_32x8_cs
+                0x30001908                qspi_write_32x16
+                0x30001998                qspi_write_32x16_cs
+                0x30001a2c                qspi_write_32x32
+                0x30001b40                qspi_write_32x32_cs
+ .text          0x30001c58       0x84 /tmp/cclr63dM.o
+                0x30001c58                delay_us
+                0x30001c90                delay_ms
+                0x30001c9c                delay_s
+                0x30001ca8                sys_tick_init
+                0x30001ccc                get_sys_tick
+ .text          0x30001cdc      0x13c /tmp/ccwQzuzI.o
+                0x30001cdc                gpio_config
+                0x30001d98                gpio_set_direction
+                0x30001dc8                gpio_set_level
+                0x30001e00                gpio_get_level
+                0x30001e14                gpio_set_function
+ .text          0x30001e18       0x74 /tmp/cchklUsO.o
+                0x30001e18                pwm_init
+                0x30001e40                pwm_set_compare
+ .text          0x30001e8c      0x17c /tmp/ccKD2mZF.o
+                0x30001e8c                MYSPI_Init
+                0x30001ef0                MYSPI_Start
+                0x30001f14                MYSPI_Stop
+                0x30001f38                MYSPI_SwapByte
+ .text          0x30002008       0x48 /tmp/ccavKJYd.o
+                0x30002008                __lshrdi3
+ .text          0x30002050       0x28 /tmp/ccX8y7OI.o
+                0x30002050                __mulsi3
+ .text          0x30002078      0xbe4 /tmp/ccyuncfs.o
+                0x30002078                st7735_wr_data8
+                0x300020c0                st7735_wr_data16
+                0x30002108                st7735_wr_data32
+                0x30002150                st7735_wr_data32x2
+                0x300021a8                st7735_wr_data32x8
+                0x30002238                st7735_wr_data32x16
+                0x30002308                st7735_wr_data32x32
+                0x30002458                st7735_wr_cmd
+                0x300024a0                st7735_addr_set
+                0x3000256c                st7735_fill
+                0x300026a0                st7735_init
+                0x30002b08                st7735_fill_img
+ .text          0x30002c5c       0x58 /tmp/ccLF1Kh5.o
+                0x30002c5c                hal_sys_uart_init
+                0x30002c6c                hal_sys_putchar
+                0x30002c78                hal_sys_putstr
+                0x30002c98                hal_sys_getchar
+ .text          0x30002cb4      0x13c /tmp/ccfuMFhb.o
+                0x30002cb4                hal_delay_us
+                0x30002d3c                hal_delay_ms
+                0x30002d54                hal_delay_s
+                0x30002d60                hal_sys_tick_init
+                0x30002dc0                hal_get_sys_tick
+ .text          0x30002df0      0x160 /tmp/ccuAIKcP.o
+                0x30002df0                hal_hp_uart_init
+                0x30002e30                hal_hp_uart_config
+                0x30002e90                hal_hp_uart_send
+                0x30002eb0                hal_hp_uart_putstr
+                0x30002ee4                hal_hp_uart_recv
+                0x30002f0c                hal_hp_uart_recv_str
+ .text          0x30002f50       0xa4 /tmp/ccuggNnJ.o
+                0x30002f50                pwm_hal_init
+                0x30002f74                pwm_hal_set_compare
+                0x30002fc8                pwm_hal_enable
+                0x30002fe0                pwm_hal_disable
  *(.text*)
- .text.startup  0x300033a4      0x51c /tmp/cccmProK.o
-                0x300033a4                main
+ .text.startup  0x30002ff4      0x65c /tmp/ccaFlclq.o
+                0x30002ff4                main
  *(.rodata)
- .rodata        0x300038c0    0x1034c /tmp/cccmProK.o
- .rodata        0x30013c0c       0xb0 /tmp/ccmqXef9.o
+ .rodata        0x30003650      0x309 /tmp/ccaFlclq.o
+ *fill*         0x30003959        0x3 
+ .rodata        0x3000395c       0xb0 /tmp/ccsskM6o.o
  *(.rodata*)
  .rodata.str1.4
-                0x30013cbc      0x16f /tmp/cccmProK.o
-                                 0x49 (size before relaxing)
+                0x30003a0c      0x15b /tmp/ccaFlclq.o
+                                 0x36 (size before relaxing)
  .rodata.str1.4
-                0x30013e2b       0x2f /tmp/ccmqXef9.o
+                0x30003b67       0x2f /tmp/ccsskM6o.o
  .rodata.str1.4
-                0x30013e2b       0x47 /tmp/ccbqtiPn.o
+                0x30003b67       0x47 /tmp/cc9sMGCK.o
  .rodata.str1.4
-                0x30013e2b       0x49 /tmp/ccgIXkqZ.o
+                0x30003b67       0x49 /tmp/cceQBVig.o
  .rodata.str1.4
-                0x30013e2b       0x5f /tmp/ccc2YFET.o
+                0x30003b67       0x5f /tmp/ccyuncfs.o
  *(.srodata)
  *(.srodata*)
-                0x30013e8c                        . = ALIGN (0x4)
- *fill*         0x30013e2b        0x1 
-                0x30013e2c                        _etext = .
-                0x30013e2c                        _sidata = _etext
+                0x30003bc8                        . = ALIGN (0x4)
+ *fill*         0x30003b67        0x1 
+                0x30003b68                        _etext = .
+                0x30003b68                        _sidata = _etext
 
-.rela.dyn       0x30013e2c        0x0
- .rela.text     0x30013e2c        0x0 /tmp/ccps5S4U.o
+.rela.dyn       0x30003b68        0x0
+ .rela.text     0x30003b68        0x0 /tmp/ccL2uBW6.o
 
-.data           0x04000000        0x4 load address 0x30013e2c
+.data           0x04000000       0x24 load address 0x30003b68
                 0x04000000                        . = ALIGN (0x4)
                 0x04000000                        _sdata = .
                 0x04000000                        _ram_start = .
                 0x04000000                        . = ALIGN (0x4)
  *(.data)
- .data          0x04000000        0x0 /tmp/ccps5S4U.o
- .data          0x04000000        0x0 /tmp/cccmProK.o
- .data          0x04000000        0x0 /tmp/ccjjhmWS.o
- .data          0x04000000        0x0 /tmp/cc1RIcyo.o
- .data          0x04000000        0x0 /tmp/ccJTh6yX.o
- .data          0x04000000        0x0 /tmp/ccmqXef9.o
- .data          0x04000000        0x0 /tmp/ccbqtiPn.o
- .data          0x04000000        0x0 /tmp/ccgIXkqZ.o
- .data          0x04000000        0x0 /tmp/ccjccbDF.o
- .data          0x04000000        0x0 /tmp/cccsVaBT.o
- .data          0x04000000        0x0 /tmp/ccB1TLzb.o
- .data          0x04000000        0x0 /tmp/cceAPU1s.o
- .data          0x04000000        0x0 /tmp/ccWxXs9e.o
- .data          0x04000000        0x0 /tmp/cc0lGMFr.o
- .data          0x04000000        0x0 /tmp/ccc2YFET.o
- .data          0x04000000        0x0 /tmp/cc9iquiC.o
- .data          0x04000000        0x0 /tmp/ccOe2Dgv.o
- .data          0x04000000        0x0 /tmp/ccZKsVGk.o
- .data          0x04000000        0x0 /tmp/cciMg3T1.o
+ .data          0x04000000        0x0 /tmp/ccL2uBW6.o
+ .data          0x04000000       0x20 /tmp/ccaFlclq.o
+ .data          0x04000020        0x0 /tmp/ccoJZt21.o
+ .data          0x04000020        0x0 /tmp/ccAQ5Xen.o
+ .data          0x04000020        0x0 /tmp/cctrKrnq.o
+ .data          0x04000020        0x0 /tmp/ccsskM6o.o
+ .data          0x04000020        0x0 /tmp/cc9sMGCK.o
+ .data          0x04000020        0x0 /tmp/cceQBVig.o
+ .data          0x04000020        0x0 /tmp/cclr63dM.o
+ .data          0x04000020        0x0 /tmp/ccwQzuzI.o
+ .data          0x04000020        0x0 /tmp/cchklUsO.o
+ .data          0x04000020        0x0 /tmp/ccKD2mZF.o
+ .data          0x04000020        0x0 /tmp/ccavKJYd.o
+ .data          0x04000020        0x0 /tmp/ccX8y7OI.o
+ .data          0x04000020        0x0 /tmp/ccyuncfs.o
+ .data          0x04000020        0x0 /tmp/ccLF1Kh5.o
+ .data          0x04000020        0x0 /tmp/ccfuMFhb.o
+ .data          0x04000020        0x0 /tmp/ccuAIKcP.o
+ .data          0x04000020        0x0 /tmp/ccuggNnJ.o
  *(.data*)
  *(.sdata)
- .sdata         0x04000000        0x2 /tmp/cccmProK.o
-                0x04000000                Std_Speed
+ .sdata         0x04000020        0x2 /tmp/ccaFlclq.o
+                0x04000020                Std_Speed
  *(.sdata*)
-                0x04000004                        . = ALIGN (0x4)
- *fill*         0x04000002        0x2 
-                0x04000004                        _edata = .
+                0x04000024                        . = ALIGN (0x4)
+ *fill*         0x04000022        0x2 
+                0x04000024                        _edata = .
 
-.bss            0x04000004     0x8008 load address 0x30013e30
-                0x04000004                        . = ALIGN (0x4)
-                0x04000004                        _sbss = .
+.bss            0x04000024     0x8004 load address 0x30003b8c
+                0x04000024                        . = ALIGN (0x4)
+                0x04000024                        _sbss = .
  *(.bss)
- .bss           0x04000004        0x0 /tmp/ccps5S4U.o
- .bss           0x04000004     0x8000 /tmp/cccmProK.o
- .bss           0x04008004        0x0 /tmp/ccjjhmWS.o
- .bss           0x04008004        0x0 /tmp/cc1RIcyo.o
- .bss           0x04008004        0x0 /tmp/ccJTh6yX.o
- .bss           0x04008004        0x0 /tmp/ccmqXef9.o
- .bss           0x04008004        0x0 /tmp/ccbqtiPn.o
- .bss           0x04008004        0x0 /tmp/ccgIXkqZ.o
- .bss           0x04008004        0x0 /tmp/ccjccbDF.o
- .bss           0x04008004        0x0 /tmp/cccsVaBT.o
- .bss           0x04008004        0x0 /tmp/ccB1TLzb.o
- .bss           0x04008004        0x0 /tmp/cceAPU1s.o
- .bss           0x04008004        0x0 /tmp/ccWxXs9e.o
- .bss           0x04008004        0x0 /tmp/cc0lGMFr.o
- .bss           0x04008004        0x0 /tmp/ccc2YFET.o
- .bss           0x04008004        0x0 /tmp/cc9iquiC.o
- .bss           0x04008004        0x0 /tmp/ccOe2Dgv.o
- .bss           0x04008004        0x0 /tmp/ccZKsVGk.o
- .bss           0x04008004        0x0 /tmp/cciMg3T1.o
+ .bss           0x04000024        0x0 /tmp/ccL2uBW6.o
+ .bss           0x04000024     0x8000 /tmp/ccaFlclq.o
+ .bss           0x04008024        0x0 /tmp/ccoJZt21.o
+ .bss           0x04008024        0x0 /tmp/ccAQ5Xen.o
+ .bss           0x04008024        0x0 /tmp/cctrKrnq.o
+ .bss           0x04008024        0x0 /tmp/ccsskM6o.o
+ .bss           0x04008024        0x0 /tmp/cc9sMGCK.o
+ .bss           0x04008024        0x0 /tmp/cceQBVig.o
+ .bss           0x04008024        0x0 /tmp/cclr63dM.o
+ .bss           0x04008024        0x0 /tmp/ccwQzuzI.o
+ .bss           0x04008024        0x0 /tmp/cchklUsO.o
+ .bss           0x04008024        0x0 /tmp/ccKD2mZF.o
+ .bss           0x04008024        0x0 /tmp/ccavKJYd.o
+ .bss           0x04008024        0x0 /tmp/ccX8y7OI.o
+ .bss           0x04008024        0x0 /tmp/ccyuncfs.o
+ .bss           0x04008024        0x0 /tmp/ccLF1Kh5.o
+ .bss           0x04008024        0x0 /tmp/ccfuMFhb.o
+ .bss           0x04008024        0x0 /tmp/ccuAIKcP.o
+ .bss           0x04008024        0x0 /tmp/ccuggNnJ.o
  *(.bss*)
  *(.sbss)
- .sbss          0x04008004        0x6 /tmp/cccmProK.o
-                0x04008006                Wheel_Right_Speed
-                0x04008008                Wheel_Left_Speed
+ .sbss          0x04008024        0x4 /tmp/ccaFlclq.o
+                0x04008024                Wheel_Right_Speed
+                0x04008026                Wheel_Left_Speed
  *(.sbss*)
  *(COMMON)
-                0x0400800c                        . = ALIGN (0x4)
- *fill*         0x0400800a        0x2 
-                0x0400800c                        _ebss = .
+                0x04008028                        . = ALIGN (0x4)
+                0x04008028                        _ebss = .
 
-.heap           0x0400800c        0x0
-                0x0400800c                        . = ALIGN (0x4)
-                0x0400800c                        _heap_start = .
-LOAD /tmp/ccps5S4U.o
-LOAD /tmp/cccmProK.o
-LOAD /tmp/ccjjhmWS.o
-LOAD /tmp/cc1RIcyo.o
-LOAD /tmp/ccJTh6yX.o
-LOAD /tmp/ccmqXef9.o
-LOAD /tmp/ccbqtiPn.o
-LOAD /tmp/ccgIXkqZ.o
-LOAD /tmp/ccjccbDF.o
-LOAD /tmp/cccsVaBT.o
-LOAD /tmp/ccB1TLzb.o
-LOAD /tmp/cceAPU1s.o
-LOAD /tmp/ccWxXs9e.o
-LOAD /tmp/cc0lGMFr.o
-LOAD /tmp/ccc2YFET.o
-LOAD /tmp/cc9iquiC.o
-LOAD /tmp/ccOe2Dgv.o
-LOAD /tmp/ccZKsVGk.o
-LOAD /tmp/cciMg3T1.o
+.heap           0x04008028        0x0
+                0x04008028                        . = ALIGN (0x4)
+                0x04008028                        _heap_start = .
+LOAD /tmp/ccL2uBW6.o
+LOAD /tmp/ccaFlclq.o
+LOAD /tmp/ccoJZt21.o
+LOAD /tmp/ccAQ5Xen.o
+LOAD /tmp/cctrKrnq.o
+LOAD /tmp/ccsskM6o.o
+LOAD /tmp/cc9sMGCK.o
+LOAD /tmp/cceQBVig.o
+LOAD /tmp/cclr63dM.o
+LOAD /tmp/ccwQzuzI.o
+LOAD /tmp/cchklUsO.o
+LOAD /tmp/ccKD2mZF.o
+LOAD /tmp/ccavKJYd.o
+LOAD /tmp/ccX8y7OI.o
+LOAD /tmp/ccyuncfs.o
+LOAD /tmp/ccLF1Kh5.o
+LOAD /tmp/ccfuMFhb.o
+LOAD /tmp/ccuAIKcP.o
+LOAD /tmp/ccuggNnJ.o
 OUTPUT(build/retrosoc_fw elf32-littleriscv)
 
 .riscv.attributes
                 0x00000000       0x2a
  .riscv.attributes
-                0x00000000       0x28 /tmp/ccps5S4U.o
+                0x00000000       0x28 /tmp/ccL2uBW6.o
  .riscv.attributes
-                0x00000028       0x2a /tmp/cccmProK.o
+                0x00000028       0x2a /tmp/ccaFlclq.o
  .riscv.attributes
-                0x00000052       0x2a /tmp/ccjjhmWS.o
+                0x00000052       0x2a /tmp/ccoJZt21.o
  .riscv.attributes
-                0x0000007c       0x2a /tmp/cc1RIcyo.o
+                0x0000007c       0x2a /tmp/ccAQ5Xen.o
  .riscv.attributes
-                0x000000a6       0x2a /tmp/ccJTh6yX.o
+                0x000000a6       0x2a /tmp/cctrKrnq.o
  .riscv.attributes
-                0x000000d0       0x2a /tmp/ccmqXef9.o
+                0x000000d0       0x2a /tmp/ccsskM6o.o
  .riscv.attributes
-                0x000000fa       0x2a /tmp/ccbqtiPn.o
+                0x000000fa       0x2a /tmp/cc9sMGCK.o
  .riscv.attributes
-                0x00000124       0x2a /tmp/ccgIXkqZ.o
+                0x00000124       0x2a /tmp/cceQBVig.o
  .riscv.attributes
-                0x0000014e       0x2a /tmp/ccjccbDF.o
+                0x0000014e       0x2a /tmp/cclr63dM.o
  .riscv.attributes
-                0x00000178       0x2a /tmp/cccsVaBT.o
+                0x00000178       0x2a /tmp/ccwQzuzI.o
  .riscv.attributes
-                0x000001a2       0x2a /tmp/ccB1TLzb.o
+                0x000001a2       0x2a /tmp/cchklUsO.o
  .riscv.attributes
-                0x000001cc       0x2a /tmp/cceAPU1s.o
+                0x000001cc       0x2a /tmp/ccKD2mZF.o
  .riscv.attributes
-                0x000001f6       0x2a /tmp/ccWxXs9e.o
+                0x000001f6       0x2a /tmp/ccavKJYd.o
  .riscv.attributes
-                0x00000220       0x2a /tmp/cc0lGMFr.o
+                0x00000220       0x2a /tmp/ccX8y7OI.o
  .riscv.attributes
-                0x0000024a       0x2a /tmp/ccc2YFET.o
+                0x0000024a       0x2a /tmp/ccyuncfs.o
  .riscv.attributes
-                0x00000274       0x2a /tmp/cc9iquiC.o
+                0x00000274       0x2a /tmp/ccLF1Kh5.o
  .riscv.attributes
-                0x0000029e       0x2a /tmp/ccOe2Dgv.o
+                0x0000029e       0x2a /tmp/ccfuMFhb.o
  .riscv.attributes
-                0x000002c8       0x2a /tmp/ccZKsVGk.o
+                0x000002c8       0x2a /tmp/ccuAIKcP.o
  .riscv.attributes
-                0x000002f2       0x2a /tmp/cciMg3T1.o
+                0x000002f2       0x2a /tmp/ccuggNnJ.o
 
 .comment        0x00000000       0x22
- .comment       0x00000000       0x22 /tmp/cccmProK.o
+ .comment       0x00000000       0x22 /tmp/ccaFlclq.o
                                  0x23 (size before relaxing)
- .comment       0x00000022       0x23 /tmp/ccjjhmWS.o
- .comment       0x00000022       0x23 /tmp/cc1RIcyo.o
- .comment       0x00000022       0x23 /tmp/ccJTh6yX.o
- .comment       0x00000022       0x23 /tmp/ccmqXef9.o
- .comment       0x00000022       0x23 /tmp/ccbqtiPn.o
- .comment       0x00000022       0x23 /tmp/ccgIXkqZ.o
- .comment       0x00000022       0x23 /tmp/ccjccbDF.o
- .comment       0x00000022       0x23 /tmp/cccsVaBT.o
- .comment       0x00000022       0x23 /tmp/ccB1TLzb.o
- .comment       0x00000022       0x23 /tmp/cceAPU1s.o
- .comment       0x00000022       0x23 /tmp/ccWxXs9e.o
- .comment       0x00000022       0x23 /tmp/cc0lGMFr.o
- .comment       0x00000022       0x23 /tmp/ccc2YFET.o
- .comment       0x00000022       0x23 /tmp/cc9iquiC.o
- .comment       0x00000022       0x23 /tmp/ccOe2Dgv.o
- .comment       0x00000022       0x23 /tmp/ccZKsVGk.o
- .comment       0x00000022       0x23 /tmp/cciMg3T1.o
+ .comment       0x00000022       0x23 /tmp/ccoJZt21.o
+ .comment       0x00000022       0x23 /tmp/ccAQ5Xen.o
+ .comment       0x00000022       0x23 /tmp/cctrKrnq.o
+ .comment       0x00000022       0x23 /tmp/ccsskM6o.o
+ .comment       0x00000022       0x23 /tmp/cc9sMGCK.o
+ .comment       0x00000022       0x23 /tmp/cceQBVig.o
+ .comment       0x00000022       0x23 /tmp/cclr63dM.o
+ .comment       0x00000022       0x23 /tmp/ccwQzuzI.o
+ .comment       0x00000022       0x23 /tmp/cchklUsO.o
+ .comment       0x00000022       0x23 /tmp/ccKD2mZF.o
+ .comment       0x00000022       0x23 /tmp/ccavKJYd.o
+ .comment       0x00000022       0x23 /tmp/ccX8y7OI.o
+ .comment       0x00000022       0x23 /tmp/ccyuncfs.o
+ .comment       0x00000022       0x23 /tmp/ccLF1Kh5.o
+ .comment       0x00000022       0x23 /tmp/ccfuMFhb.o
+ .comment       0x00000022       0x23 /tmp/ccuAIKcP.o
+ .comment       0x00000022       0x23 /tmp/ccuggNnJ.o
 
 Cross Reference Table
 
 Symbol                                            File
-MYSPI_Init                                        /tmp/cceAPU1s.o
-MYSPI_Start                                       /tmp/cceAPU1s.o
-MYSPI_Stop                                        /tmp/cceAPU1s.o
-MYSPI_SwapByte                                    /tmp/cceAPU1s.o
-Std_Speed                                         /tmp/cccmProK.o
-Wheel_Left_Speed                                  /tmp/cccmProK.o
-Wheel_Right_Speed                                 /tmp/cccmProK.o
-__lshrdi3                                         /tmp/ccWxXs9e.o
-                                                  /tmp/cccsVaBT.o
-__mulsi3                                          /tmp/cc0lGMFr.o
-_ebss                                             /tmp/ccps5S4U.o
-_edata                                            /tmp/ccps5S4U.o
-_sbss                                             /tmp/ccps5S4U.o
-_sdata                                            /tmp/ccps5S4U.o
-_sidata                                           /tmp/ccps5S4U.o
-delay_ms                                          /tmp/ccjccbDF.o
-delay_s                                           /tmp/ccjccbDF.o
-delay_us                                          /tmp/ccjccbDF.o
-flashio_worker_begin                              /tmp/ccps5S4U.o
-flashio_worker_end                                /tmp/ccps5S4U.o
-get_sys_tick                                      /tmp/ccjccbDF.o
-gpio_config                                       /tmp/cccsVaBT.o
-gpio_get_level                                    /tmp/cccsVaBT.o
-gpio_hal_get_level                                /tmp/ccjjhmWS.o
-                                                  /tmp/cceAPU1s.o
-gpio_hal_input_enable                             /tmp/ccjjhmWS.o
-                                                  /tmp/cceAPU1s.o
-                                                  /tmp/cccmProK.o
-gpio_hal_output_enable                            /tmp/ccjjhmWS.o
-                                                  /tmp/ccc2YFET.o
-                                                  /tmp/cceAPU1s.o
-                                                  /tmp/cccmProK.o
-gpio_hal_read_update                              /tmp/ccjjhmWS.o
-                                                  /tmp/cceAPU1s.o
-gpio_hal_set_fcfg                                 /tmp/ccjjhmWS.o
-gpio_hal_set_level                                /tmp/ccjjhmWS.o
-                                                  /tmp/ccc2YFET.o
-                                                  /tmp/cceAPU1s.o
-                                                  /tmp/cccmProK.o
-gpio_hal_set_mux                                  /tmp/ccjjhmWS.o
-gpio_hal_write_update                             /tmp/ccjjhmWS.o
-                                                  /tmp/cceAPU1s.o
-gpio_set_direction                                /tmp/cccsVaBT.o
-gpio_set_function                                 /tmp/cccsVaBT.o
-gpio_set_level                                    /tmp/cccsVaBT.o
-hal_delay_ms                                      /tmp/ccOe2Dgv.o
-                                                  /tmp/ccc2YFET.o
-hal_delay_s                                       /tmp/ccOe2Dgv.o
-hal_delay_us                                      /tmp/ccOe2Dgv.o
-hal_get_sys_tick                                  /tmp/ccOe2Dgv.o
-hal_hp_uart_config                                /tmp/ccZKsVGk.o
-hal_hp_uart_init                                  /tmp/ccZKsVGk.o
-                                                  /tmp/cccmProK.o
-hal_hp_uart_putstr                                /tmp/ccZKsVGk.o
-hal_hp_uart_recv                                  /tmp/ccZKsVGk.o
-hal_hp_uart_recv_str                              /tmp/ccZKsVGk.o
-hal_hp_uart_send                                  /tmp/ccZKsVGk.o
-hal_qspi_deinit                                   /tmp/cc1RIcyo.o
-hal_qspi_init                                     /tmp/cc1RIcyo.o
-                                                  /tmp/cccmProK.o
-hal_qspi_write_16                                 /tmp/cc1RIcyo.o
-hal_qspi_write_16_cs                              /tmp/cc1RIcyo.o
-                                                  /tmp/ccc2YFET.o
-hal_qspi_write_32                                 /tmp/cc1RIcyo.o
-hal_qspi_write_32_cs                              /tmp/cc1RIcyo.o
-                                                  /tmp/ccc2YFET.o
-hal_qspi_write_32x16                              /tmp/cc1RIcyo.o
-hal_qspi_write_32x16_cs                           /tmp/cc1RIcyo.o
-                                                  /tmp/ccc2YFET.o
-hal_qspi_write_32x2                               /tmp/cc1RIcyo.o
-hal_qspi_write_32x2_cs                            /tmp/cc1RIcyo.o
-                                                  /tmp/ccc2YFET.o
-hal_qspi_write_32x32                              /tmp/cc1RIcyo.o
-hal_qspi_write_32x32_cs                           /tmp/cc1RIcyo.o
-                                                  /tmp/ccc2YFET.o
-hal_qspi_write_32x8                               /tmp/cc1RIcyo.o
-hal_qspi_write_32x8_cs                            /tmp/cc1RIcyo.o
-                                                  /tmp/ccc2YFET.o
-hal_qspi_write_8                                  /tmp/cc1RIcyo.o
-hal_qspi_write_8_cs                               /tmp/cc1RIcyo.o
-                                                  /tmp/ccc2YFET.o
-hal_sys_getchar                                   /tmp/cc9iquiC.o
-hal_sys_putchar                                   /tmp/cc9iquiC.o
-                                                  /tmp/ccmqXef9.o
-hal_sys_putstr                                    /tmp/cc9iquiC.o
-                                                  /tmp/cccmProK.o
-hal_sys_tick_init                                 /tmp/ccOe2Dgv.o
-hal_sys_uart_init                                 /tmp/cc9iquiC.o
-                                                  /tmp/cccmProK.o
-i2c_init                                          /tmp/ccbqtiPn.o
-i2c_read_nbyte                                    /tmp/ccbqtiPn.o
-i2c_write_nbyte                                   /tmp/ccbqtiPn.o
-main                                              /tmp/cccmProK.o
-                                                  /tmp/ccps5S4U.o
-memcmp                                            /tmp/ccJTh6yX.o
-memcpy                                            /tmp/ccJTh6yX.o
-                                                  /tmp/cccmProK.o
-memmove                                           /tmp/ccJTh6yX.o
-memset                                            /tmp/ccJTh6yX.o
-printf                                            /tmp/ccmqXef9.o
-                                                  /tmp/ccc2YFET.o
-                                                  /tmp/ccgIXkqZ.o
-                                                  /tmp/ccbqtiPn.o
-pwm_hal_disable                                   /tmp/cciMg3T1.o
-pwm_hal_enable                                    /tmp/cciMg3T1.o
-                                                  /tmp/cccmProK.o
-pwm_hal_init                                      /tmp/cciMg3T1.o
-                                                  /tmp/cccmProK.o
-pwm_hal_set_compare                               /tmp/cciMg3T1.o
-                                                  /tmp/cccmProK.o
-pwm_init                                          /tmp/ccB1TLzb.o
-pwm_set_compare                                   /tmp/ccB1TLzb.o
-qspi_init                                         /tmp/ccgIXkqZ.o
-qspi_write_16                                     /tmp/ccgIXkqZ.o
-qspi_write_16_cs                                  /tmp/ccgIXkqZ.o
-qspi_write_32                                     /tmp/ccgIXkqZ.o
-qspi_write_32_cs                                  /tmp/ccgIXkqZ.o
-qspi_write_32x16                                  /tmp/ccgIXkqZ.o
-qspi_write_32x16_cs                               /tmp/ccgIXkqZ.o
-qspi_write_32x2                                   /tmp/ccgIXkqZ.o
-qspi_write_32x32                                  /tmp/ccgIXkqZ.o
-qspi_write_32x32_cs                               /tmp/ccgIXkqZ.o
-qspi_write_32x8                                   /tmp/ccgIXkqZ.o
-qspi_write_32x8_cs                                /tmp/ccgIXkqZ.o
-qspi_write_8                                      /tmp/ccgIXkqZ.o
-qspi_write_8_cs                                   /tmp/ccgIXkqZ.o
-snprintf                                          /tmp/ccmqXef9.o
-st7735_addr_set                                   /tmp/ccc2YFET.o
-st7735_fill                                       /tmp/ccc2YFET.o
-st7735_fill_img                                   /tmp/ccc2YFET.o
-                                                  /tmp/cccmProK.o
-st7735_init                                       /tmp/ccc2YFET.o
-                                                  /tmp/cccmProK.o
-st7735_wr_cmd                                     /tmp/ccc2YFET.o
-st7735_wr_data16                                  /tmp/ccc2YFET.o
-st7735_wr_data32                                  /tmp/ccc2YFET.o
-st7735_wr_data32x16                               /tmp/ccc2YFET.o
-st7735_wr_data32x2                                /tmp/ccc2YFET.o
-st7735_wr_data32x32                               /tmp/ccc2YFET.o
-st7735_wr_data32x8                                /tmp/ccc2YFET.o
-st7735_wr_data8                                   /tmp/ccc2YFET.o
-strchr                                            /tmp/ccJTh6yX.o
-strcmp                                            /tmp/ccJTh6yX.o
-strcpy                                            /tmp/ccJTh6yX.o
-strlen                                            /tmp/ccJTh6yX.o
-strncmp                                           /tmp/ccJTh6yX.o
-strncpy                                           /tmp/ccJTh6yX.o
-sys_tick_init                                     /tmp/ccjccbDF.o
-vprintf                                           /tmp/ccmqXef9.o
-vsnprintf                                         /tmp/ccmqXef9.o
+MYSPI_Init                                        /tmp/ccKD2mZF.o
+MYSPI_Start                                       /tmp/ccKD2mZF.o
+MYSPI_Stop                                        /tmp/ccKD2mZF.o
+MYSPI_SwapByte                                    /tmp/ccKD2mZF.o
+Std_Speed                                         /tmp/ccaFlclq.o
+Wheel_Left_Speed                                  /tmp/ccaFlclq.o
+Wheel_Right_Speed                                 /tmp/ccaFlclq.o
+__lshrdi3                                         /tmp/ccavKJYd.o
+                                                  /tmp/ccwQzuzI.o
+__mulsi3                                          /tmp/ccX8y7OI.o
+_ebss                                             /tmp/ccL2uBW6.o
+_edata                                            /tmp/ccL2uBW6.o
+_sbss                                             /tmp/ccL2uBW6.o
+_sdata                                            /tmp/ccL2uBW6.o
+_sidata                                           /tmp/ccL2uBW6.o
+delay_ms                                          /tmp/cclr63dM.o
+delay_s                                           /tmp/cclr63dM.o
+delay_us                                          /tmp/cclr63dM.o
+flashio_worker_begin                              /tmp/ccL2uBW6.o
+flashio_worker_end                                /tmp/ccL2uBW6.o
+get_sys_tick                                      /tmp/cclr63dM.o
+gpio_config                                       /tmp/ccwQzuzI.o
+gpio_get_level                                    /tmp/ccwQzuzI.o
+gpio_hal_get_level                                /tmp/ccoJZt21.o
+                                                  /tmp/ccKD2mZF.o
+gpio_hal_input_enable                             /tmp/ccoJZt21.o
+                                                  /tmp/ccKD2mZF.o
+                                                  /tmp/ccaFlclq.o
+gpio_hal_output_enable                            /tmp/ccoJZt21.o
+                                                  /tmp/ccyuncfs.o
+                                                  /tmp/ccKD2mZF.o
+                                                  /tmp/ccaFlclq.o
+gpio_hal_read_update                              /tmp/ccoJZt21.o
+                                                  /tmp/ccKD2mZF.o
+gpio_hal_set_fcfg                                 /tmp/ccoJZt21.o
+gpio_hal_set_level                                /tmp/ccoJZt21.o
+                                                  /tmp/ccyuncfs.o
+                                                  /tmp/ccKD2mZF.o
+                                                  /tmp/ccaFlclq.o
+gpio_hal_set_mux                                  /tmp/ccoJZt21.o
+gpio_hal_write_update                             /tmp/ccoJZt21.o
+                                                  /tmp/ccKD2mZF.o
+gpio_set_direction                                /tmp/ccwQzuzI.o
+gpio_set_function                                 /tmp/ccwQzuzI.o
+gpio_set_level                                    /tmp/ccwQzuzI.o
+hal_delay_ms                                      /tmp/ccfuMFhb.o
+                                                  /tmp/ccyuncfs.o
+hal_delay_s                                       /tmp/ccfuMFhb.o
+hal_delay_us                                      /tmp/ccfuMFhb.o
+hal_get_sys_tick                                  /tmp/ccfuMFhb.o
+hal_hp_uart_config                                /tmp/ccuAIKcP.o
+hal_hp_uart_init                                  /tmp/ccuAIKcP.o
+                                                  /tmp/ccaFlclq.o
+hal_hp_uart_putstr                                /tmp/ccuAIKcP.o
+hal_hp_uart_recv                                  /tmp/ccuAIKcP.o
+                                                  /tmp/ccaFlclq.o
+hal_hp_uart_recv_str                              /tmp/ccuAIKcP.o
+hal_hp_uart_send                                  /tmp/ccuAIKcP.o
+hal_qspi_deinit                                   /tmp/ccAQ5Xen.o
+hal_qspi_init                                     /tmp/ccAQ5Xen.o
+                                                  /tmp/ccaFlclq.o
+hal_qspi_write_16                                 /tmp/ccAQ5Xen.o
+hal_qspi_write_16_cs                              /tmp/ccAQ5Xen.o
+                                                  /tmp/ccyuncfs.o
+hal_qspi_write_32                                 /tmp/ccAQ5Xen.o
+hal_qspi_write_32_cs                              /tmp/ccAQ5Xen.o
+                                                  /tmp/ccyuncfs.o
+hal_qspi_write_32x16                              /tmp/ccAQ5Xen.o
+hal_qspi_write_32x16_cs                           /tmp/ccAQ5Xen.o
+                                                  /tmp/ccyuncfs.o
+hal_qspi_write_32x2                               /tmp/ccAQ5Xen.o
+hal_qspi_write_32x2_cs                            /tmp/ccAQ5Xen.o
+                                                  /tmp/ccyuncfs.o
+hal_qspi_write_32x32                              /tmp/ccAQ5Xen.o
+hal_qspi_write_32x32_cs                           /tmp/ccAQ5Xen.o
+                                                  /tmp/ccyuncfs.o
+hal_qspi_write_32x8                               /tmp/ccAQ5Xen.o
+hal_qspi_write_32x8_cs                            /tmp/ccAQ5Xen.o
+                                                  /tmp/ccyuncfs.o
+hal_qspi_write_8                                  /tmp/ccAQ5Xen.o
+hal_qspi_write_8_cs                               /tmp/ccAQ5Xen.o
+                                                  /tmp/ccyuncfs.o
+hal_sys_getchar                                   /tmp/ccLF1Kh5.o
+hal_sys_putchar                                   /tmp/ccLF1Kh5.o
+                                                  /tmp/ccsskM6o.o
+                                                  /tmp/ccaFlclq.o
+hal_sys_putstr                                    /tmp/ccLF1Kh5.o
+                                                  /tmp/ccaFlclq.o
+hal_sys_tick_init                                 /tmp/ccfuMFhb.o
+hal_sys_uart_init                                 /tmp/ccLF1Kh5.o
+                                                  /tmp/ccaFlclq.o
+i2c_init                                          /tmp/cc9sMGCK.o
+i2c_read_nbyte                                    /tmp/cc9sMGCK.o
+i2c_write_nbyte                                   /tmp/cc9sMGCK.o
+main                                              /tmp/ccaFlclq.o
+                                                  /tmp/ccL2uBW6.o
+memcmp                                            /tmp/cctrKrnq.o
+memcpy                                            /tmp/cctrKrnq.o
+memmove                                           /tmp/cctrKrnq.o
+memset                                            /tmp/cctrKrnq.o
+printf                                            /tmp/ccsskM6o.o
+                                                  /tmp/ccyuncfs.o
+                                                  /tmp/cceQBVig.o
+                                                  /tmp/cc9sMGCK.o
+pwm_hal_disable                                   /tmp/ccuggNnJ.o
+pwm_hal_enable                                    /tmp/ccuggNnJ.o
+                                                  /tmp/ccaFlclq.o
+pwm_hal_init                                      /tmp/ccuggNnJ.o
+                                                  /tmp/ccaFlclq.o
+pwm_hal_set_compare                               /tmp/ccuggNnJ.o
+                                                  /tmp/ccaFlclq.o
+pwm_init                                          /tmp/cchklUsO.o
+pwm_set_compare                                   /tmp/cchklUsO.o
+qspi_init                                         /tmp/cceQBVig.o
+qspi_write_16                                     /tmp/cceQBVig.o
+qspi_write_16_cs                                  /tmp/cceQBVig.o
+qspi_write_32                                     /tmp/cceQBVig.o
+qspi_write_32_cs                                  /tmp/cceQBVig.o
+qspi_write_32x16                                  /tmp/cceQBVig.o
+qspi_write_32x16_cs                               /tmp/cceQBVig.o
+qspi_write_32x2                                   /tmp/cceQBVig.o
+qspi_write_32x32                                  /tmp/cceQBVig.o
+qspi_write_32x32_cs                               /tmp/cceQBVig.o
+qspi_write_32x8                                   /tmp/cceQBVig.o
+qspi_write_32x8_cs                                /tmp/cceQBVig.o
+qspi_write_8                                      /tmp/cceQBVig.o
+qspi_write_8_cs                                   /tmp/cceQBVig.o
+snprintf                                          /tmp/ccsskM6o.o
+st7735_addr_set                                   /tmp/ccyuncfs.o
+st7735_fill                                       /tmp/ccyuncfs.o
+st7735_fill_img                                   /tmp/ccyuncfs.o
+                                                  /tmp/ccaFlclq.o
+st7735_init                                       /tmp/ccyuncfs.o
+                                                  /tmp/ccaFlclq.o
+st7735_wr_cmd                                     /tmp/ccyuncfs.o
+st7735_wr_data16                                  /tmp/ccyuncfs.o
+st7735_wr_data32                                  /tmp/ccyuncfs.o
+st7735_wr_data32x16                               /tmp/ccyuncfs.o
+st7735_wr_data32x2                                /tmp/ccyuncfs.o
+st7735_wr_data32x32                               /tmp/ccyuncfs.o
+st7735_wr_data32x8                                /tmp/ccyuncfs.o
+st7735_wr_data8                                   /tmp/ccyuncfs.o
+strchr                                            /tmp/cctrKrnq.o
+strcmp                                            /tmp/cctrKrnq.o
+strcpy                                            /tmp/cctrKrnq.o
+strlen                                            /tmp/cctrKrnq.o
+strncmp                                           /tmp/cctrKrnq.o
+strncpy                                           /tmp/cctrKrnq.o
+sys_tick_init                                     /tmp/cclr63dM.o
+vprintf                                           /tmp/ccsskM6o.o
+vsnprintf                                         /tmp/ccsskM6o.o

@@ -165,9 +165,9 @@ static int sw_uart_try_read(uint8_t *out) {
         *out = (uint8_t)((*out >> 1) | (v << 7));   /* LSB first */
         target -= step;
     }
-    target -= step;                          /* 停止位中心 */
-    while (REG_TIM_1_DATA > target) { }
-    return sw_rx_level() ? 1 : 0;
+    /* 不等/不验停止位：立即返回，留足余量抓背靠背下一帧的起始沿。
+     * 噪声假字节由主循环 default 分支过滤 */
+    return 1;
 }
 
 static void motor_apply(void) {
@@ -233,7 +233,7 @@ void main(void) {
     gpio_hal_input_enable(GPIO_ID, SW_RX_PIN);
     REG_GPIO_0_PUB |= (1u << SW_RX_PIN);
 
-    /* PWM：两通道写 MOTOR_PWM_MAX（反相→0% 占空比）后使能 */
+    /* 原生串口接收脚无需额外配置；GPIO_5 软件串口方案保留备用 */
     pwm_config_t pcfg = { .pscr = PWM_PSCR, .cmp = PWM_CMP };
     pwm_hal_init(NULL, 0, &pcfg);
     pwm_hal_set_compare(NULL, 0, PWM_CH2, MOTOR_PWM_MAX);
@@ -242,13 +242,31 @@ void main(void) {
 
     hal_hp_uart_init(9600);
 
-    /* ---- 遥控主循环：无调试、无刷屏，接收窗口最大化 ---- */
+    /* ---- 遥控主循环：硬件串口收命令，收到的数据全部回显到调试串口 ---- */
+    uint16_t rx_cnt = 0;
     fb_str(0, 0, "RC Ready", 0xFFFF);
     st7735_fill_img(&lcd, 0, 0, FB_W, FB_H, fb);
 
     for (;;) {
-        if (sw_uart_try_read(&rb)) {
-            cmd = (char)rb;
+        if (hp_uart_data_ready()) {
+            hal_hp_uart_recv(&cmd);
+            rx_cnt++;
+
+            /* 回显：可打印直接显示，其余显示 [XX] */
+            if (cmd >= 32 && cmd < 127) {
+                hal_sys_putchar(cmd);
+            } else {
+                hal_sys_putchar('[');
+                hal_sys_putchar(hexd[((uint8_t)cmd >> 4) & 0xF]);
+                hal_sys_putchar(hexd[(uint8_t)cmd & 0xF]);
+                hal_sys_putchar(']');
+            }
+            if ((rx_cnt & 0x0F) == 0) {
+                hal_sys_putstr(" #");
+                put_dec((int16_t)rx_cnt);
+                hal_sys_putstr("\n");
+            }
+
             switch (cmd) {
             case 'W': case 'w':
                 Wheel_Left_Speed = Std_Speed;
@@ -280,11 +298,9 @@ void main(void) {
                 if (Std_Speed < 200) Std_Speed = 200;
                 break;
             default:
-                continue;               /* 未识别字节：不动作 */
+                continue;               /* 未识别字节：不动作（已回显） */
             }
-            motor_apply();              /* 立即执行（微秒级） */
-        } else {
-            motor_apply();              /* 心跳：保持安全态 */
+            motor_apply();              /* 立即执行 */
         }
     }
 }
