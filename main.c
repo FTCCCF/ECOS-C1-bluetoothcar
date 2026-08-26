@@ -6,8 +6,9 @@
 #define PWM_CMP             20000
 #define MOTOR_PWM_MAX       20000
 #define STM32_SPEED_MAX     6000
-#define LEFT_ADJUST_PCT     845     // 前进左轮系数（千分率：845=84.5%，步进 0.1%）
-#define REVERSE_ADJUST_PCT  1000    // 后退左轮系数（千分率：1000=100%）
+/* 左轮配平系数（千分率）：前进用 LEFT，后退用 REVERSE；'[' 减 / ']' 加实时调 */
+static uint16_t LEFT_ADJUST_PCT = 992;   /* 实车配平实测值（2024 遥控定版） */
+static uint16_t REVERSE_ADJUST_PCT = 1000;
 #define LEFT_PWM_MIN        0     // 0=关闭左轮最小占空比，两轮同PWM
 
 #define PIN_MOTOR_L_DIR1    GPIO_NUM_0
@@ -145,7 +146,7 @@ static void tim1_delay_ticks(uint32_t ticks) {
 static uint32_t sw_bit_ticks = 104u * 72u;   /* 保留：未用 */
 /* 静默解码版：绝对时间轴调度，消除逐位累计漂移 */
 static int sw_uart_try_read(uint8_t *out) {
-    uint32_t guard = 100000;                 /* 全速轮询等待起始位 */
+    uint32_t guard = 1600;                   /* ~20ms 空闲窗口：给调试打印留时隙 */
     while (sw_rx_level()) {
         if (--guard == 0) return 0;
     }
@@ -173,7 +174,8 @@ static int sw_uart_try_read(uint8_t *out) {
 static void motor_apply(void) {
     int16_t l_pwm, r_pwm;
 
-    int16_t adj = (Wheel_Left_Speed < 0) ? REVERSE_ADJUST_PCT : LEFT_ADJUST_PCT;
+    int16_t adj = (Wheel_Left_Speed < 0) ? (int16_t)REVERSE_ADJUST_PCT
+                                         : (int16_t)LEFT_ADJUST_PCT;
     l_pwm = (int16_t)((int32_t)speed_to_pwm(Wheel_Left_Speed) * adj / 1000);
     if (Wheel_Left_Speed != 0 && l_pwm < LEFT_PWM_MIN)
         l_pwm = LEFT_PWM_MIN;
@@ -205,6 +207,42 @@ static void motor_apply(void) {
     pwm_hal_set_compare(NULL, 0, PWM_CH1, MOTOR_PWM_MAX - r_pwm);
 }
 
+/* 调试页：全帧绘制（页切换时用） */
+static void draw_debug_full(void) {
+    fb_clear(0x0000);
+    fb_str(0, 0,  "L-SPD:", 0xFFFF);
+    fb_dec(56, 0, Wheel_Left_Speed, 0xFFFF);
+    fb_str(0, 8,  "R-SPD:", 0xFFFF);
+    fb_dec(56, 8, Wheel_Right_Speed, 0xFFFF);
+    fb_str(0, 16, "PWM-L:", 0xFFFF);
+    fb_dec(56, 16, speed_to_pwm(Wheel_Left_Speed), 0xFFFF);
+    fb_str(0, 24, "PWM-R:", 0xFFFF);
+    fb_dec(56, 24, speed_to_pwm(Wheel_Right_Speed), 0xFFFF);
+    fb_str(0, 32, "SPD=", 0xFFFF);
+    fb_dec(40, 32, Std_Speed, 0xFFFF);
+    fb_str(0, 48, "TRIM=", 0xFFFF);
+    fb_dec(40, 48, (int16_t)LEFT_ADJUST_PCT, 0x07E0);
+    st7735_fill_img(&lcd, 0, 0, FB_W, FB_H, fb);
+}
+
+/* 调试页数值更新：只推顶部 56 行 */
+static void draw_debug_vals(void) {
+    fb_clear(0x0000);
+    fb_str(0, 0,  "L-SPD:", 0xFFFF);
+    fb_dec(56, 0, Wheel_Left_Speed, 0xFFFF);
+    fb_str(0, 8,  "R-SPD:", 0xFFFF);
+    fb_dec(56, 8, Wheel_Right_Speed, 0xFFFF);
+    fb_str(0, 16, "PWM-L:", 0xFFFF);
+    fb_dec(56, 16, speed_to_pwm(Wheel_Left_Speed), 0xFFFF);
+    fb_str(0, 24, "PWM-R:", 0xFFFF);
+    fb_dec(56, 24, speed_to_pwm(Wheel_Right_Speed), 0xFFFF);
+    fb_str(0, 32, "SPD=", 0xFFFF);
+    fb_dec(40, 32, Std_Speed, 0xFFFF);
+    fb_str(0, 48, "TRIM=", 0xFFFF);
+    fb_dec(40, 48, (int16_t)LEFT_ADJUST_PCT, 0x07E0);
+    lcd_flush_rows(0, 56);
+}
+
 void main(void) {
     char cmd;
     uint32_t idle_cnt = 0;
@@ -233,39 +271,33 @@ void main(void) {
     gpio_hal_input_enable(GPIO_ID, SW_RX_PIN);
     REG_GPIO_0_PUB |= (1u << SW_RX_PIN);
 
-    /* 原生串口接收脚无需额外配置；GPIO_5 软件串口方案保留备用 */
+    /* GPIO_5 软件串口接收：输入 + 上拉（空闲稳定为高） */
+    gpio_hal_input_enable(GPIO_ID, SW_RX_PIN);
+    REG_GPIO_0_PUB |= (1u << SW_RX_PIN);
+
     pwm_config_t pcfg = { .pscr = PWM_PSCR, .cmp = PWM_CMP };
     pwm_hal_init(NULL, 0, &pcfg);
     pwm_hal_set_compare(NULL, 0, PWM_CH2, MOTOR_PWM_MAX);
     pwm_hal_set_compare(NULL, 0, PWM_CH1, MOTOR_PWM_MAX);
     pwm_hal_enable(NULL, 0);
 
-    hal_hp_uart_init(9600);
+    hal_hp_uart_init(9600);   /* 仅初始化；硬件RX已损坏，发送方向未用 */
 
-    /* ---- 遥控主循环：硬件串口收命令，收到的数据全部回显到调试串口 ---- */
-    uint16_t rx_cnt = 0;
+    /* ---- 遥控主循环：GPIO 软件串口收命令（含WS背靠背优化）----
+     * 调试回显走缓冲：字节先入队，线路空闲 20ms 时统一打印，
+     * 避免打印阻塞挤掉背靠背帧的起始沿 */
+    static char dbg_buf[64];
+    static uint8_t dbg_len = 0;
+    static uint16_t slide_idle = 0;          /* 轮播翻页计时（×20ms） */
+
     fb_str(0, 0, "RC Ready", 0xFFFF);
     st7735_fill_img(&lcd, 0, 0, FB_W, FB_H, fb);
 
     for (;;) {
-        if (hp_uart_data_ready()) {
-            hal_hp_uart_recv(&cmd);
-            rx_cnt++;
-
-            /* 回显：可打印直接显示，其余显示 [XX] */
-            if (cmd >= 32 && cmd < 127) {
-                hal_sys_putchar(cmd);
-            } else {
-                hal_sys_putchar('[');
-                hal_sys_putchar(hexd[((uint8_t)cmd >> 4) & 0xF]);
-                hal_sys_putchar(hexd[(uint8_t)cmd & 0xF]);
-                hal_sys_putchar(']');
-            }
-            if ((rx_cnt & 0x0F) == 0) {
-                hal_sys_putstr(" #");
-                put_dec((int16_t)rx_cnt);
-                hal_sys_putstr("\n");
-            }
+        if (sw_uart_try_read(&rb)) {
+            cmd = (char)rb;
+            /* 入调试缓冲（原样保存，空闲时格式化打印） */
+            if (dbg_len < sizeof(dbg_buf)) dbg_buf[dbg_len++] = rb;
 
             switch (cmd) {
             case 'W': case 'w':
@@ -297,10 +329,51 @@ void main(void) {
                 Std_Speed -= 200;
                 if (Std_Speed < 200) Std_Speed = 200;
                 break;
+            case '[':                       /* 左轮配平 -1%：修“微左拐” */
+                if (LEFT_ADJUST_PCT > 500) LEFT_ADJUST_PCT -= 10;
+                break;
+            case ']':                       /* 左轮配平 +1%：修“微右拐” */
+                if (LEFT_ADJUST_PCT < 1200) LEFT_ADJUST_PCT += 10;
+                break;
+            case 'P': case 'p':
+                mode = !mode;
+                slide_idx = 0;
+                if (mode) {
+                    memcpy(fb, ysyx_logo, sizeof(fb));
+                    st7735_fill_img(&lcd, 0, 0, FB_W, FB_H, fb);
+                } else {
+                    draw_debug_full();
+                }
+                break;
             default:
-                continue;               /* 未识别字节：不动作（已回显） */
+                continue;               /* 未识别字节：不动作 */
             }
             motor_apply();              /* 立即执行 */
+            if (!mode) draw_debug_vals();   /* 调试页数值局部刷新 */
+        } else {
+            /* 20ms 线路空闲：安全打印缓冲的蓝牙数据 */
+            if (dbg_len) {
+                for (uint8_t i = 0; i < dbg_len; i++) {
+                    char c = dbg_buf[i];
+                    if (c >= 32 && c < 127) {
+                        hal_sys_putchar(c);
+                    } else {
+                        hal_sys_putchar('[');
+                        hal_sys_putchar(hexd[((uint8_t)c >> 4) & 0xF]);
+                        hal_sys_putchar(hexd[(uint8_t)c & 0xF]);
+                        hal_sys_putchar(']');
+                    }
+                }
+                hal_sys_putstr("\n");
+                dbg_len = 0;
+            }
+            /* 轮播模式：每 ~3s 在 ACSL ↔ YSYX 间翻页 */
+            if (mode && ++slide_idle >= 150) {
+                slide_idle = 0;
+                slide_idx = !slide_idx;
+                memcpy(fb, slide_idx ? asc_logo : ysyx_logo, sizeof(fb));
+                st7735_fill_img(&lcd, 0, 0, FB_W, FB_H, fb);
+            }
         }
     }
 }
