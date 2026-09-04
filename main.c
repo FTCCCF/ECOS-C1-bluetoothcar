@@ -7,7 +7,7 @@
 #define MOTOR_PWM_MAX       20000
 #define STM32_SPEED_MAX     6000
 /* 左轮配平系数（千分率）：前进用 LEFT，后退用 REVERSE；'[' 减 / ']' 加实时调 */
-static uint16_t LEFT_ADJUST_PCT = 992;   /* 实车配平实测值（2024 遥控定版） */
+static uint16_t LEFT_ADJUST_PCT = 952;   /* 实车配平实测值（2024 遥控定版） */
 static uint16_t REVERSE_ADJUST_PCT = 1000;
 #define LEFT_PWM_MIN        0     // 0=关闭左轮最小占空比，两轮同PWM
 
@@ -29,7 +29,7 @@ static uint32_t fb[FB_N];
 
 int16_t Wheel_Left_Speed = 0;
 int16_t Wheel_Right_Speed = 0;
-    int16_t Std_Speed = 4800;
+    int16_t Std_Speed = 4000;
 static uint8_t mode = 0; // 0=debug, 1=slideshow
 static uint8_t slide_idx = 0;
 
@@ -329,10 +329,10 @@ void main(void) {
                 Std_Speed -= 200;
                 if (Std_Speed < 200) Std_Speed = 200;
                 break;
-            case '[':                       /* 左轮配平 -1%：修“微左拐” */
+            case 'J': case 'j':             /* 左轮配平 -1%：修“微左拐” */
                 if (LEFT_ADJUST_PCT > 500) LEFT_ADJUST_PCT -= 10;
                 break;
-            case ']':                       /* 左轮配平 +1%：修“微右拐” */
+            case 'I': case 'i':             /* 左轮配平 +1%：修“微右拐” */
                 if (LEFT_ADJUST_PCT < 1200) LEFT_ADJUST_PCT += 10;
                 break;
             case 'P': case 'p':
