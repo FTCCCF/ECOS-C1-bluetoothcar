@@ -18,9 +18,6 @@ static uint16_t REVERSE_ADJUST_PCT = 1000;
 
 #define GPIO_ID 0
 
-#define SW_RX_PIN           GPIO_NUM_5  /* 软件串口接收：HC-05 TX 插到 GPIO_5 */
-#define SW_BIT_US           104         /* 实测确认 9600bps（位宽~101us） */
-
 #define FB_W 128
 #define FB_H 128
 #define FB_N (FB_W * FB_H / 2)
@@ -124,53 +121,6 @@ static int hp_uart_data_ready(void) {
 
 static const char hexd[] = "0123456789ABCDEF";
 
-/* ---- 软件串口接收（GPIO 位采样，9600 8N1）---- */
-static uint8_t sw_rx_level(void) {
-    return (uint8_t)((REG_GPIO_0_DR >> SW_RX_PIN) & 1u);
-}
-
-static void tim1_delay_us(uint32_t us) {
-    REG_TIM_1_CONFIG = 0x0100;      /* stop */
-    REG_TIM_1_DATA = us * 72u;      /* 72MHz */
-    REG_TIM_1_CONFIG = 0x0101;      /* start, 倒数到 0 */
-    while (REG_TIM_1_DATA) { }
-}
-
-static void tim1_delay_ticks(uint32_t ticks) {
-    REG_TIM_1_CONFIG = 0x0100;
-    REG_TIM_1_DATA = ticks;
-    REG_TIM_1_CONFIG = 0x0101;
-    while (REG_TIM_1_DATA) { }
-}
-
-static uint32_t sw_bit_ticks = 104u * 72u;   /* 保留：未用 */
-/* 静默解码版：绝对时间轴调度，消除逐位累计漂移 */
-static int sw_uart_try_read(uint8_t *out) {
-    uint32_t guard = 1600;                   /* ~20ms 空闲窗口：给调试打印留时隙 */
-    while (sw_rx_level()) {
-        if (--guard == 0) return 0;
-    }
-    /* 检测到下降沿。启动自由计数的 TIM_1，按绝对时刻采样：
-     * 位中心 k 的时刻 = 检测点 + (k+1.5)*位宽；读取耗时不再引入累计误差 */
-    REG_TIM_1_CONFIG = 0x0100;
-    REG_TIM_1_DATA = 0xFFFFFF;
-    REG_TIM_1_CONFIG = 0x0101;
-
-    uint32_t step = SW_BIT_US * 72u;         /* 位宽 ticks */
-    uint32_t target = 0xFFFFFF - step * 3u / 2u;   /* b0 中心 */
-
-    *out = 0;
-    for (int b = 0; b < 8; b++) {
-        while (REG_TIM_1_DATA > target) { }  /* 等到该位中心 */
-        uint8_t v = sw_rx_level();
-        *out = (uint8_t)((*out >> 1) | (v << 7));   /* LSB first */
-        target -= step;
-    }
-    /* 不等/不验停止位：立即返回，留足余量抓背靠背下一帧的起始沿。
-     * 噪声假字节由主循环 default 分支过滤 */
-    return 1;
-}
-
 static void motor_apply(void) {
     int16_t l_pwm, r_pwm;
 
@@ -245,11 +195,9 @@ static void draw_debug_vals(void) {
 
 void main(void) {
     char cmd;
-    uint32_t idle_cnt = 0;
-    uint8_t rb;
 
     hal_sys_uart_init();
-    hal_sys_putstr("RC MODE: SW-UART RX @9600 GPIO5\n");
+    hal_sys_putstr("RC MODE: HW-UART1 RX @9600\n");
 
     hal_qspi_config_t qc = {.clkdiv = 0};
     hal_qspi_init(HAL_QSPI_PORT_0, &qc);
@@ -267,25 +215,17 @@ void main(void) {
     gpio_hal_set_level(GPIO_ID, PIN_MOTOR_R_DIR1, GPIO_LEVEL_LOW);
     gpio_hal_set_level(GPIO_ID, PIN_MOTOR_R_DIR2, GPIO_LEVEL_LOW);
 
-    /* 软件串口接收脚：输入 + 上拉（空闲稳定为高） */
-    gpio_hal_input_enable(GPIO_ID, SW_RX_PIN);
-    REG_GPIO_0_PUB |= (1u << SW_RX_PIN);
-
-    /* GPIO_5 软件串口接收：输入 + 上拉（空闲稳定为高） */
-    gpio_hal_input_enable(GPIO_ID, SW_RX_PIN);
-    REG_GPIO_0_PUB |= (1u << SW_RX_PIN);
-
     pwm_config_t pcfg = { .pscr = PWM_PSCR, .cmp = PWM_CMP };
     pwm_hal_init(NULL, 0, &pcfg);
     pwm_hal_set_compare(NULL, 0, PWM_CH2, MOTOR_PWM_MAX);
     pwm_hal_set_compare(NULL, 0, PWM_CH1, MOTOR_PWM_MAX);
     pwm_hal_enable(NULL, 0);
 
-    hal_hp_uart_init(9600);   /* 仅初始化；硬件RX已损坏，发送方向未用 */
+    hal_hp_uart_init(9600);   /* 原生 UART1 收 HC-05 命令 @9600 8N1 */
 
-    /* ---- 遥控主循环：GPIO 软件串口收命令（含WS背靠背优化）----
+    /* ---- 遥控主循环：原生 UART1（HP_UART）@9600 收命令 ----
      * 调试回显走缓冲：字节先入队，线路空闲 20ms 时统一打印，
-     * 避免打印阻塞挤掉背靠背帧的起始沿 */
+     * 回显耗时不会挤占命令处理 */
     static char dbg_buf[64];
     static uint8_t dbg_len = 0;
     static uint16_t slide_idle = 0;          /* 轮播翻页计时（×20ms） */
@@ -294,10 +234,10 @@ void main(void) {
     st7735_fill_img(&lcd, 0, 0, FB_W, FB_H, fb);
 
     for (;;) {
-        if (sw_uart_try_read(&rb)) {
-            cmd = (char)rb;
+        if (hp_uart_data_ready()) {
+            hal_hp_uart_recv(&cmd);
             /* 入调试缓冲（原样保存，空闲时格式化打印） */
-            if (dbg_len < sizeof(dbg_buf)) dbg_buf[dbg_len++] = rb;
+            if (dbg_len < sizeof(dbg_buf)) dbg_buf[dbg_len++] = cmd;
 
             switch (cmd) {
             case 'W': case 'w':

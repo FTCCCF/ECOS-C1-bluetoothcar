@@ -40,18 +40,19 @@ pwm_hal_set_compare(NULL, 0, PWM_CH1, MOTOR_PWM_MAX - r_pwm);  // right
 - Wiring: left motor output = TB6612 **BO1** (channel B), right = AO1 (channel A). DIR: GPIO 0/1 = left, GPIO 6/7 = right (code labels match physical wheels).
 
 ## Defaults (main.c)
-- `Std_Speed = 4000` (~83% duty — right motor's high stall threshold requires high duty); +/- steps of 200, clamp 200..4800
+- `Std_Speed = 4000` (~83% duty — right motor's high stall threshold requires high duty); +/- steps of 200, clamp 200..6000
+- Left wheel trim: `LEFT_ADJUST_PCT = 952` (forward) / `REVERSE_ADJUST_PCT = 1000` (reverse); J/I keys trim ∓/±1% live
 - Turn inner wheel factor: `turn_slow_num/den = 5/10` (=0.5); `turn_rate` unused (kept 1/1)
 
-## Commands (HC-05, UART1 @ 38400)
-W/w=forward both, S/s=stop, A/a+L/l=left turn (0.5S/S), D/d=right turn (S/0.5S), X/x=reverse, +/-=speed, P/p=toggle green-red/slideshow mode.
-LCD: solid green `0x07E0` while moving, red `0xF800` when stopped (mode 0); slideshow (mode 1). Serial `[DBG]` prints L/R speeds, PWMs, SPD.
+## Commands (HC-05 → native UART1 @ 9600, branch `native-uart`)
+W/w=forward both, S/s=stop, A/a+L/l=left turn (0.5S/S), D/d=right turn (S/0.5S), X/x=reverse, +/-=speed, J/I=left trim -/+1%, P/p=toggle debug-page/slideshow mode (3s auto-page).
+Receive path: poll `hp_uart_data_ready()` (LSR bit7==0) → `hal_hp_uart_recv()`; GPIO5 software UART removed on this branch. Debug echo buffered: bytes queued in `dbg_buf`, flushed to sys UART after 20ms line-idle. LCD debug page refreshes only top 56 rows (`lcd_flush_rows`) to cut QSPI blocking.
 
 ## Interfaces
 - **PWM driver** (SDK C2): `pwm_hal_init(NULL,0,&{pscr,cmp})`, `pwm_hal_set_compare(NULL,0,PWM_CHx,val)` (CR0..CR3), `pwm_hal_enable(NULL,0)` (CTRL=3). Regs @ 0x03004000.
 - **GPIO** (local driver/gpio.c): DR/DDR/PUB/PDB @ 0x03000000; DDR 1=input 0=output; **read-modify-write required** for DR and DDR; no PINMUX/FCFG on C1.
 - **QSPI** (local driver/qspi.c): LEN=n*0x80000 → TXFIFO=data<<24 → STATUS=258 → poll `STATUS & 0xFFFF == 1`. CS auto-managed; never use CS bits.
-- **HP_UART (HC-05)**: @ 0x03003000 LCR/DIV/TRX/FCR/LSR; **baud 38400** (DIV = CPU_FREQ/38400 - 1); LCR=0x1F (8N1); send: wait LSR bit8==0 then TRX; recv: wait LSR bit7==0 then read TRX.
+- **HP_UART (HC-05)**: @ 0x03003000 LCR/DIV/TRX/FCR/LSR; **baud 9600** (DIV = CPU_FREQ/9600 - 1; HC-05 data-mode baud, confirmed by GPIO sw-uart era); LCR=0x1F (8N1); FCR FIFO enabled by `hal_hp_uart_init`; send: wait LSR bit8==0 then TRX; recv: poll LSR bit7==0 (data ready) then read TRX. HC-05 TX → board CUST_UART_RX.
 - **Sys UART**: CLKDIV @ 0x03000010, DATA @ 0x03000014; baud = CPU_FREQ/CLKDIV (115200).
 - **Timer**: TIM_0 CONFIG 0x0300005c, VALUE 0x03000060, DATA 0x03000064 (TIM_1 +0xc); CONFIG=0x0100 stop → DATA=count → 0x0101 start → poll DATA!=0.
 - **ST7735**: st7735_device_t with dc=GPIO_NUM_2, port=HAL_QSPI_PORT_0; `.qspi_cs` set but unused (all transfers use STATUS=258). fb = uint32_t[8192], 2× RGB565 per word (hi=even x).
@@ -67,4 +68,5 @@ LCD: solid green `0x07E0` while moving, red `0xF800` when stopped (mode 0); slid
 - LEFT_ADJUST_PCT journey: 100→90→50→30→120→200→…→80→84.5 (forward; float literal folded to 84 at compile time). Now permille 845 (=84.5%, /1000). 80 chosen because left motor physically faster; reverse needed 100.
 - LEFT_PWM_MIN experiment (20/30/40/50%) revealed left stall ≈40%; then disabled (0) for equal-PWM test which revealed CH1 inversion.
 - Green/red screen replaced old LCD debug text; 4s move timer and BT timeout were implemented then REMOVED (no STATE pin wired; user rejected timeouts).
-- Git: local branch `master`; remote `git@github.com:FTCCCF/ECOS-C1-.git` has `main` with commits, no `origin` configured — pull remote main before pushing.
+- Git: working branch `main` (GPIO sw-uart 定版) / `native-uart` (native UART1 RX); remote `origin` = `git@github.com:FTCCCF/ECOS-C1-.git`. Pull remote main before pushing.
+- native-uart branch (2026-09-05): RX moved back to native UART1 @9600 at user request (onboard RX wiring confirmed working); GPIO5 sw-uart + TIM_1 bit-bang helpers deleted. Earlier "板载RX疑似损坏" conclusion superseded — fd0ae9f was the对照测试 that led to the sw-uart era.
