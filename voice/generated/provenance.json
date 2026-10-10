@@ -1,0 +1,35 @@
+{
+  "source_repository": "FTCCCF/ECOS-C1-bluetoothcar",
+  "upstream_commit": "c12c7cab8c33b65c28a8ab5370155fa6c56c9911",
+  "checkpoint_sha256": "3961dfa25718a90dfdac45f60cc896e2165162302887856590af9787392ec154",
+  "architecture": "MFCC12 temporal CNN",
+  "classes": [
+    "forward",
+    "stop",
+    "backward",
+    "unknown",
+    "noise"
+  ],
+  "decision_rule": {
+    "classes": [
+      "forward",
+      "stop",
+      "backward",
+      "unknown",
+      "noise"
+    ],
+    "command_min_probability": 0.75,
+    "command_min_margin": 0.15,
+    "otherwise": "reject"
+  },
+  "weights_changed": false,
+  "thresholds_changed": false,
+  "arithmetic": "fixed point frontend, INT8 MAC / INT32 accumulators",
+  "model_header_sha256": "0e76523a8caab528c86389f3e32b645825afa573fbed39860f811396e2e56964",
+  "dsp_header_sha256": "8834776b12df621c5e703401b169349a8100c5118e18f99825de6eb7eb01c37f",
+  "board_inference_verified": false,
+  "original_export_header_sha256": {
+    "model": "609cc37be773ce4895acb00d3ac9b51860b6d8bac78c0a39c2ebb8313233a712",
+    "dsp": "c88da2ca0e62a62f2b86fdb82965e09353a3e34973af886bb3ddd2baf39cbda2"
+  }
+}

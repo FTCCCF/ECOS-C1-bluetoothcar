@@ -1,0 +1,37 @@
+{
+  "source_repository": "FTCCCF/ECOS-C1-bluetoothcar",
+  "upstream_commit": "c12c7cab8c33b65c28a8ab5370155fa6c56c9911",
+  "checkpoint_sha256": "a04434631d6eadee122c5c6d0c0fed2eb7b32609ffa127e3e13fb8002f30063d",
+  "architecture": "MFCC12 temporal CNN",
+  "classes": [
+    "forward",
+    "stop",
+    "backward",
+    "unknown",
+    "noise"
+  ],
+  "decision_rule": {
+    "command_min_probability": 0.75,
+    "command_min_margin": 0.15,
+    "classes": [
+      "forward",
+      "stop",
+      "backward",
+      "unknown",
+      "noise"
+    ]
+  },
+  "weights_changed": true,
+  "thresholds_changed": false,
+  "cepstral_center": true,
+  "final_pool_bins": 1,
+  "arithmetic": "fixed point frontend, INT8 MAC / INT32 accumulators",
+  "model_header_sha256": "54c4b0bf9a2f8683ac196633649116004a93a275d57df8f513733458e545603a",
+  "dsp_header_sha256": "8834776b12df621c5e703401b169349a8100c5118e18f99825de6eb7eb01c37f",
+  "board_inference_verified": true,
+  "release_evidence": "validation/release/evidence.json",
+  "original_export_header_sha256": {
+    "model": "559d55a976c3c7db747690f8e6d295ce82a1fd933bb1d436d27497de65b97a15",
+    "dsp": "c88da2ca0e62a62f2b86fdb82965e09353a3e34973af886bb3ddd2baf39cbda2"
+  }
+}

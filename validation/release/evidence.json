@@ -1,0 +1,187 @@
+{
+  "date": "2026-10-10",
+  "firmware_version": "v9",
+  "model_sha256": "a04434631d6eadee122c5c6d0c0fed2eb7b32609ffa127e3e13fb8002f30063d",
+  "final_pool_bins": 1,
+  "cepstral_center": true,
+  "dsp_precision": 16,
+  "host_c": {
+    "checkpoint_sha256": "a04434631d6eadee122c5c6d0c0fed2eb7b32609ffa127e3e13fb8002f30063d",
+    "cepstral_center": true,
+    "windows": 63,
+    "model_header_sha256": "559d55a976c3c7db747690f8e6d295ce82a1fd933bb1d436d27497de65b97a15",
+    "dsp_header_sha256": "c88da2ca0e62a62f2b86fdb82965e09353a3e34973af886bb3ddd2baf39cbda2",
+    "final_pool_bins": 1,
+    "dsp_precision": 16,
+    "command_decision_agreement": 63,
+    "maximum_probability_error": 0.006361469304200729,
+    "same_integer_input_maximum_probability_error": 4.957965368923567e-06,
+    "same_integer_input_decision_agreement": 63,
+    "network_probability_tolerance": 1e-05,
+    "frontend_probability_difference_is_diagnostic": true,
+    "maximum_mfcc_error": 5.994647979736328,
+    "functional_correct": 63,
+    "false_commands": 0,
+    "host_c_full_frontend_executed": true,
+    "rv32_runtime_verified": false,
+    "board_verified": false,
+    "not_a_new_independent_score": true,
+    "window_groups": {
+      "validation": 30,
+      "new_calibration_train": 28,
+      "reused_field_diagnostic": 5
+    }
+  },
+  "negative_c": {
+    "checkpoint_sha256": "a04434631d6eadee122c5c6d0c0fed2eb7b32609ffa127e3e13fb8002f30063d",
+    "recordings": 5,
+    "correlated_windows": 100,
+    "unique_audio_seconds": 14.3940625,
+    "command_outputs": 0,
+    "maximum_probability_error": 0.02300558969015032,
+    "host_c_full_frontend_executed": true,
+    "board_verified": false,
+    "independent_test": false
+  },
+  "baseline_regression": {
+    "original_output_sha256": "81e34c16dfc434d4a5eb993ab5460f230aeffacbda223ddad761ddaa9cd555e5",
+    "new_output_sha256": "81e34c16dfc434d4a5eb993ab5460f230aeffacbda223ddad761ddaa9cd555e5",
+    "bytes": 120048,
+    "windows": 41,
+    "exact_match": true,
+    "baseline_precision": 16,
+    "baseline_final_pool_bins": 8,
+    "board_verified": false
+  },
+  "rv32": {
+    "selftest_binary_sha256": "c83b904a49f1f7133da8a1cbab80ee5fba10b93dc04d85acb4d29075259a76c7",
+    "testbench_sha256": "a2523f75fdb1694e6d74f992262c923a1c82b2b90662be5ec86b68cd3f4105b4",
+    "cpu_rtl_sha256": "4a857efac20e66b58e2c983276d8ce3c447e19a2baad6e393c81e13fe9cbff90",
+    "actual_rv32_execution": true,
+    "model_only_drive_disabled": true,
+    "board_verified": false,
+    "summary": [
+      "UART RESULT class=forward decision=forward p_permille=989 infer_cycles=388533650 CR2_B=20000 CR1_A=20000 p_forward=989 p_stop=6 p_backward=1 p_unknown=0 p_noise=2",
+      "RV32 MODEL PASS total_cycles=388891403 infer_cycles=388533650 wait=0"
+    ]
+  },
+  "gpio_capture": {
+    "wait_cycles": [
+      0,
+      2
+    ],
+    "passed": true,
+    "trigger_prefix_and_stop_passed": true,
+    "scope": "previous simulations of the unchanged audio driver; separate from physical board"
+  },
+  "download": {
+    "timestamp": "2026-10-10T11:57:14.1776140+08:00",
+    "mode": "car",
+    "downloaded_file_sha256": "4E8DD37982D90BFEC8036863BD7E50B8815A43CE1C6B33113211E2CED9CC7BED",
+    "file_copy_verified": true,
+    "downloader_state_before": "copy binary format executable(*.bin) to this disk",
+    "downloader_state": "write successful !!!",
+    "downloader_state_read": "FILE_FLAG_NO_BUFFERING",
+    "board_flashed": true,
+    "board_inference_verified": false,
+    "car_motion_verified": false,
+    "firmware": "build/voice/c1_voice_car.bin"
+  },
+  "board": {
+    "identity_confirmed": true,
+    "inference_confirmed": true,
+    "uart_lines": [
+      "RESULT class=forward decision=forward p_permille=857 infer_cycles=402812283 CR2_B=0 CR1_A=0 p_forward=857 p_stop=55 p_backward=24 p_unknown=53 p_noise=8",
+      "READY",
+      "PAUSED motors_stopped",
+      "READY",
+      "C1 VOICE CAR v9",
+      "MODEL_SHA256=a04434631d6eadee122c5c6d0c0fed2eb7b32609ffa127e3e13fb8002f30063d",
+      "cepstral_center=1",
+      "final_pool_bins=1",
+      "dsp_precision=16",
+      "mode=car",
+      "motor_duty=full",
+      "motor_wiring=left_A,right_B",
+      "classes=forward,stop,backward,unknown,noise",
+      "capture=voice_onset pre_samples=2048 voice_blocks=6 model_start_16k=0",
+      "SCK=H55.3 WS=H55.5 SD_GPIO=5 default_SD=H55.4 VDD=H55.30 GND=H55.28 LR=H55.29",
+      "i=info a=one_capture r=continuous s=stop_and_pause d=last_audio q=lcd_off",
+      "READY"
+    ],
+    "measured_inference_cycles": 402812283,
+    "nominal_72mhz_inference_seconds": 5.594615041666667,
+    "inference_listening_gap": true
+  },
+  "user_acceptance": {
+    "date": "2026-10-10",
+    "firmware_version": "v9",
+    "model_sha256": "a04434631d6eadee122c5c6d0c0fed2eb7b32609ffa127e3e13fb8002f30063d",
+    "source": "user physical observation and acceptance in this conversation",
+    "user_result": "前进、停车、后退、停车都正常",
+    "user_acceptance": "我觉得这个已经能用了",
+    "test_occurred_before_passive_uart_observation": true,
+    "sequence": [
+      "forward",
+      "stop",
+      "backward",
+      "stop"
+    ],
+    "physical_sequence_passed": true,
+    "neural_stop_sequence_captured_by_uart": false,
+    "independent_motion_commands_sent_during_user_test": false,
+    "timing": "before 2026-10-10T12:25:52+08:00 passive observer; exact test time unrecorded"
+  },
+  "observer": {
+    "started_at": "2026-10-10T12:25:52+08:00",
+    "serial_bytes_written": 0,
+    "results": "four later unknown/reject results",
+    "covers_user_acceptance_sequence": false,
+    "neural_stop_transitions": []
+  },
+  "training": {
+    "train_windows": 178,
+    "val_windows": 30,
+    "original_test_windows": 20,
+    "original_test_evaluated_for_this_candidate": false,
+    "accepted_phone_recordings": {
+      "forward": 9,
+      "stop": 14,
+      "backward": 11
+    },
+    "whole_source_group_split": true,
+    "private_recordings_not_distributed": true,
+    "annotations_sha256": "d2c96cfe5c280dd97213f8c7924e0074fcba83215c4084847a80ee365f49bc72"
+  },
+  "raw_report_hashes": {
+    "tests/results/candidates/a04434631d6eadee-layered/port-verification.json": "30af7043831813d0638cca5ccc35914dd19506c164446605007bbc1aadb6a11d",
+    "tests/results/candidates/a04434631d6eadee-layered/negative-c-verification.json": "c238ef0a6bc1b91d31a70b47b1a958d074c4e365909ac5c8f9731c7193047b69",
+    "tests/results/candidates/a04434631d6eadee-layered/rv32/rv32-verification.json": "c0d76d86d0f979ceecf4012316c8d8266283ce7d8899b47cf19269297beb5f65",
+    "tests/results/baseline-infer-regression-restored/verification.json": "3e72afd14bd107c27f61307b544942ffdcb90c76e2847657ddbff60c0d799087",
+    "tests/results/flash-car-result.json": "9d02977088395c50daaf7c1e4ba546c55b5e45983df3d323dcbbf0f04a1413f2",
+    "tests/results/diagnostic/20261010-115914-voice-v9-global-ready.json": "462be71cfa848d42814d899616acddc4b48f3f895f5ef929c71b6001e25497ac",
+    "tests/results/diagnostic/20261010-120600-voice-v9-user-continuous-test.json": "4d38644ca68d9ebff93ca03beb1f394dc5faca11aecec77c440099dd9054284f",
+    "tests/results/diagnostic/20261010-122552-voice-v9-user-forward-stop-backward-stop.json": "024e9ce223b2dd73a1a1d34d6e623ae29660821efa9f87d24f5dc9026b6ce790"
+  },
+  "verified_source_hashes": {
+    "voice/fixed.c": "d9b885b54ecb91549514d1956a287ce48f79c48e024a9d089f71110190e7f7ca",
+    "voice/frontend.c": "81bd7b730bb0c2a2ee30c83643eeaacc471e3313f9513a4273f8188b3c303497",
+    "voice/infer.c": "bfdd1bac7b8b3a03f9ede91fddb84b9c18b794aa4b06ea7d3b0421f2fa804e41",
+    "voice/motor.c": "69e90e855817916e7c298268f9ecce0920204a979370ddaa5eb08e6a6309b163",
+    "voice/soft_i2s.S": "efa9e94657aa3a003d758fd0287e3f6cef83b95ee9baf6114ea382795010f509",
+    "voice/voice.h": "536c54a1ac82bccf0337a674edcdbb98a8fce3bf5f313a9fc51f4ca3b351e2ec",
+    "voice/model_config.h": "b86e9a7246eaf9e1d74fd3c2261b30dd7c5b0714e585fea801c7308046770dda",
+    "driver/voice_board.c": "320179a5b60ea5f641b818c16b14dfb0e98833e04618782a01d42167c0356772",
+    "driver/voice_board.h": "e1badbe4a34db188e8f1c3fe3d0424bd49738ff4bdeb9dcffbc79d97170d9593",
+    "driver/voice_audio_diag.c": "e6cdbb2e5488d5d8f8b3f0c6b4d5bf6b7c882e520565f647562c6f95492f77a0",
+    "tests/tb.sv": "a2523f75fdb1694e6d74f992262c923a1c82b2b90662be5ec86b68cd3f4105b4",
+    "tests/vendor/picorv32.v": "4a857efac20e66b58e2c983276d8ce3c447e19a2baad6e393c81e13fe9cbff90",
+    "voice/models/mfcc-cmn-global-20261010-11/model.h": "54c4b0bf9a2f8683ac196633649116004a93a275d57df8f513733458e545603a",
+    "voice/models/mfcc-cmn-global-20261010-11/dsp.h": "8834776b12df621c5e703401b169349a8100c5118e18f99825de6eb7eb01c37f"
+  },
+  "limitations": [
+    "Inference pauses microphone clocks for about 5.6 seconds.",
+    "Physical command sequence is user-reported, not covered by subsequent UART log.",
+    "Port replays are development evidence, not a new independent recognition score."
+  ]
+}

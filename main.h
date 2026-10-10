@@ -1,14 +1,6 @@
-#include <stdint.h>
-#include <string.h>
-#include <stdio.h>
-#include "libgcc.h"
-#include "generated/autoconf.h"
+#ifndef MAIN_H
+#define MAIN_H
 #include "board.h"
-#include "hal_gpio.h"
-#include "hal_gpio_type.h"
-#include "hal_pwm.h"
-#include "hal_pwm_type.h"
-#include "hal_sys_uart.h"
-#include "hal_hp_uart.h"
-#include "hal_timer.h"
-#include "st7735.h"
+#include "driver/voice_board.h"
+#include "voice/voice.h"
+#endif
