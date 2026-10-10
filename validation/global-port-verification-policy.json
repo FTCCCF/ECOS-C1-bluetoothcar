@@ -1,0 +1,15 @@
+{
+  "purpose": "Separate fixed-point frontend approximation from integer network implementation error before any fresh v9 board test",
+  "command_min_probability": 0.75,
+  "command_min_margin": 0.15,
+  "command_rule_changed": false,
+  "exact_c_integer_input_network_probability_error_maximum": 0.00001,
+  "require_complete_audio_decisions_match_frozen_reference": true,
+  "require_reviewed_functional_labels_correct": true,
+  "require_original_full_negative_sources_emit_no_command": true,
+  "require_original_41_window_frontend_output_byte_identical": true,
+  "require_current_candidate_actual_rv32_execution": true,
+  "prior_0_005_cross_frontend_gate_failed_evidence": "tests/results/candidates/a04434631d6eadee/port-verification.json",
+  "reason_for_layered_check": "Three input integers changed at rounding boundaries with MFCC error 0.002025 on the largest probability-difference case. The network error on the same integers was under 0.000005. Cross-frontend probability differences remain reported, not hidden; neither weights nor the command acceptance rule are adjusted to force agreement.",
+  "higher_precision_trial_status": "Not deployed; did not improve probability agreement; sources and outputs archived under tests/results/candidates/a04434631d6eadee-fft19"
+}

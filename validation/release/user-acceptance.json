@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-10",
+  "firmware_version": "v9",
+  "model_sha256": "a04434631d6eadee122c5c6d0c0fed2eb7b32609ffa127e3e13fb8002f30063d",
+  "source": "user physical observation and acceptance in this conversation",
+  "user_result": "前进、停车、后退、停车都正常",
+  "user_acceptance": "我觉得这个已经能用了",
+  "test_occurred_before_passive_uart_observation": true,
+  "sequence": [
+    "forward",
+    "stop",
+    "backward",
+    "stop"
+  ],
+  "physical_sequence_passed": true,
+  "neural_stop_sequence_captured_by_uart": false,
+  "independent_motion_commands_sent_during_user_test": false,
+  "timing": "before 2026-10-10T12:25:52+08:00 passive observer; exact test time unrecorded"
+}
